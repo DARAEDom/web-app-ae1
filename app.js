@@ -26,8 +26,13 @@ connect.connect ( e => {
 				console.log('Connected Successfully');
 
 				app.get('/map/:lat/:lon', (req, res) => {
-						
-				})
+						console.log(`/map GET method, ${req.params.lat}, ${req.params.lon}`)
+				});
+
+				app.post('/map/add', (res, res) => {
+					console.log(`/map/add POST method, ${req.body.title}`)
+				});
+
 				app.listen(PORT);
 				console.log(`App is running at http://localhost:${PORT}`)
 		}
