@@ -1,39 +1,38 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const mysql = require('mysql2');
 const cors = require('cors');
 
-require('dotenv').config();
+// require('dotenv').config(); no .env file in this dir
 
 app.use(bodyParser.json());
 app.use(cors());
 const PORT=process.env.port;
-// app.set("view engine", "ejs");
 
-
-const connect = mysql.createConnection({
-		host: 'localhost',
-		user: 'mysql',
-		password: process.env.pass,
-		database: 'mysql'
+// own middleware
+app.use('*', (req, res, next) => {
+		console.log(`Received a request from / at ${Date.now()}.`);
+		next();
 });
 
-connect.connect ( e => {
-		if (e) {
-				console.log(`Error ${e} has occured`);
-		} else {
-				console.log('Connected Successfully');
+app.get('gettest/:text', (req, res) => {
+		res.send(`Get Method Entered TEXT: ${req.params.text}`);	
+});
 
-				app.get('/map/:lat/:lon', (req, res) => {
-						console.log(`/map GET method, ${req.params.lat}, ${req.params.lon}`)
-				});
+app.post('posttest', (req, res) => {
+		res.send(`Post Method Entered Details: ${req.body.text}`);
+})
 
-				app.post('/map/add', (res, res) => {
-					console.log(`/map/add POST method, ${req.body.title}`)
-				});
+app.use('/user', routes);
 
-				app.listen(PORT);
-				console.log(`App is running at http://localhost:${PORT}`)
-		}
+//				app.get('/map/:lat/:lon', (req, res) => {
+//						console.log(`/map GET method, ${req.params.lat}, ${req.params.lon}`)
+//				});
+//
+//				app.post('/map/add', (res, res) => {
+//					console.log(`/map/add POST method, ${req.body.title}`)
+//				});
+//
+//				app.listen(PORT);
+//				console.log(`App is running at http://localhost:${PORT}`)
 });

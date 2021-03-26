@@ -15,3 +15,7 @@ Coding Part:
 - Firstly to connect to the database we need mysql connection query with details containing the following: host, user, database and in for the purpose of security password.
 - This is where dotenv module comes handy offering special layer of security where the password can be stored in different file so it does not have to be exposed to others.
 - Next step is to assign web addresses and methods they use.
+
+After week 8 session:
+- I have decided to change the layout from having one app.js to app.js including mysqlconn.js and users.js
+- This required to change the current work a bit, split parts into 3 and apply code appoplietly
