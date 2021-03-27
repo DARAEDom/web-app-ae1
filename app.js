@@ -2,12 +2,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const routes = require(./controllers/users);
+const conn = require('./controllers/mysqlconn');
 // require('dotenv').config(); no .env file in this dir
 
 app.use(bodyParser.json());
 app.use(cors());
-const PORT=process.env.port;
+const SERVERPORT=process.env.port;
 
 // own middleware
 app.use('*', (req, res, next) => {
@@ -35,4 +36,7 @@ app.use('/user', routes);
 //
 //				app.listen(PORT);
 //				console.log(`App is running at http://localhost:${PORT}`)
-});
+//});
+
+console.log(`Server is running on ${SERVERPORT}`);
+app.listen(SERVERPORT);
