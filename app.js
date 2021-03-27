@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const routes = require(./controllers/users);
+const routes = require('./controllers/users');
 const conn = require('./controllers/mysqlconn');
-// require('dotenv').config(); no .env file in this dir
+require('dotenv').config(); 
 
 app.use(bodyParser.json());
 app.use(cors());
-const SERVERPORT=process.env.port;
+const SERVER_PORT=process.env.port;
 
 // own middleware
 app.use('*', (req, res, next) => {
@@ -16,11 +16,11 @@ app.use('*', (req, res, next) => {
 		next();
 });
 
-app.get('gettest/:text', (req, res) => {
+app.get('/gettest/:text', (req, res) => {
 		res.send(`Get Method Entered TEXT: ${req.params.text}`);	
 });
 
-app.post('posttest', (req, res) => {
+app.post('/posttest', (req, res) => {
 		res.send(`Post Method Entered Details: ${req.body.text}`);
 })
 
@@ -38,5 +38,5 @@ app.use('/user', routes);
 //				console.log(`App is running at http://localhost:${PORT}`)
 //});
 
-console.log(`Server is running on ${SERVERPORT}`);
-app.listen(SERVERPORT);
+console.log(`Server is running on ${SERVER_PORT}`);
+app.listen(SERVER_PORT);
