@@ -28,15 +28,15 @@ app.get('poi/reccomend/:region', (req, res) => {
 		console.log('POT RECCOMENDATION GET');
 });
 
+// home page
+app.get('/', (req, res) => {
+		res.send("Home");
+});
 
 
 // testing 
 app.get('/user/:text' , (req, res) => {
 		console.log(`Parameters: ${req.params.text}`);
-});
-// home page
-app.get('/', (req, res) => {
-		res.send("Home");
 });
 
 app.get('/gettest/:text', (req, res) => {
