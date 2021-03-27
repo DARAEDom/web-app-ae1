@@ -16,10 +16,25 @@ app.use('/user', (req, res, next) => {
 		next();
 });
 
+app.get('/poi/:region', (req, res) => {
+		console.log('POT GET');
+});
+
+app.post('/poi/add', (req, res) => {
+		console.log('POI ADD POST ');
+});
+
+app.get('poi/reccomend/:region', (req, res) => {
+		console.log('POT RECCOMENDATION GET');
+});
+
+
+
+// testing 
 app.get('/user/:text' , (req, res) => {
 		console.log(`Parameters: ${req.params.text}`);
 });
-
+// home page
 app.get('/', (req, res) => {
 		res.send("Home");
 });
