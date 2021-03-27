@@ -18,4 +18,10 @@ Coding Part:
 
 After week 8 session:
 - I have decided to change the layout from having one app.js to app.js including mysqlconn.js and users.js
-- This required to change the current work a bit, split parts into 3 and apply code appoplietly
+- This required to change the current work a bit, split parts into 3 and apply code appriopiately.
+- more env values, to keep them secure
+- for testing purposes, there are endpoints which belong in app.js and others are located in the router to test capabilities of the Middleware.
+
+** Database Set up **:
+- Add new database by using command `CREATE DATABASE <db_name>`
+- Add data to the database by typing in the following `mysql -u <username> -p <db_name> < <sql filename>` use -p argument if you have password set up on your account
