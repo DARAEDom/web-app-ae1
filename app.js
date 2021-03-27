@@ -11,9 +11,17 @@ app.use(cors());
 const SERVER_PORT=process.env.port;
 
 // own middleware
-app.use('*', (req, res, next) => {
-		console.log(`Received a request from / at ${Date.now()}.`);
+app.use('/user', (req, res, next) => {
+		console.log(`Received a request in time ${Date.now()} ms.`);
 		next();
+});
+
+app.get('/user/:text' , (req, res) => {
+		console.log(`Parameters: ${req.params.text}`);
+});
+
+app.get('/', (req, res) => {
+		res.send("Home");
 });
 
 app.get('/gettest/:text', (req, res) => {
@@ -38,5 +46,8 @@ app.use('/user', routes);
 //				console.log(`App is running at http://localhost:${PORT}`)
 //});
 
-console.log(`Server is running on ${SERVER_PORT}`);
-app.listen(SERVER_PORT);
+console.log(`Server is running on http://localhost:8080`);
+app.listen(8080);
+
+//console.log(`Server is running on http://localhost:${SERVER_PORT}`);
+//app.listen(SERVER_PORT);

@@ -14,7 +14,7 @@ conn.connect ( err => {
 				console.log(err);
 				process.exit(1);
 		} else {
-				console.log('Connected to the database');
+				console.log(`Connected to the database ${process.env.DB}`);
 		}
 });
 module.exports = conn; 
