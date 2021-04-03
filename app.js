@@ -16,7 +16,7 @@ app.use('/user', (req, res, next) => {
 		next();
 });
 
-app.get('/poi/:region', (req, res) => {
+app.get('/poi/find/:region', (req, res) => {
 		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
 		(error, results, fields) => {
 				if (error) {
@@ -38,8 +38,17 @@ app.post('/poi/add', (req, res) => {
 		});
 });
 
-app.get('poi/reccomend/:region', (req, res) => {
-		console.log('POT RECCOMENDATION GET');
+app.post('poi/:id/recommend', (req, res) => {
+		conn.query(`UPDATE pointsofinterest SET recommendations=recommendations+1 WHERE id=?`, [req.params.id],
+		(error, results, fields) => {
+				if(error) {
+						res.status(500).json({error:error});
+				} else if(results.affectedRows==1) {
+						res.json({'message': 'Recomendation sent!'});
+				} else {
+						res.status(404).json({error: 'ID not found!'});
+				}
+		});
 });
 
 // home page
