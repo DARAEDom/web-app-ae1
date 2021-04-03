@@ -29,3 +29,8 @@ After week 8 session:
 - This database seems to be a little bit broken, if we copy paste the entire contents of it, mariadb does not print any erorr, I will have to analyse the code itself by comparing it to previous sessions, in this cases it's ht_users.sql
 - I decided to try spliting the database into 3 by CREATE TABLE, I have realised I made a mistake whenever I import poi_users poi_reviews table is being dropped, I noticed the code issue imidately, afterwards I was able to have 3 tables in one database, Database name webAE, in the code I had to change the code to `use webAE;` 
 Database with 3 tables is created and imported at this point
+
+**Part A**
+- Add Create app.get with address ``/poi/find/:region`` and create connection with database, in this case we need region that will be recieved from req.params.region and passed to the connetcion query
+- ``/poi/add`` will create new record to pointsofinterest and if it is successful, repsond with message
+- Recommendation will be based on post request where one of the value is going to be increased by 1
