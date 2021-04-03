@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const routes = require('./controllers/users');
-const conn = require('./controllers/mysqlconn');
+const routes = require('./routes/users');
+const conn = require('./routes/mysqlconn');
 require('dotenv').config(); 
 
 app.use(bodyParser.json());
@@ -17,11 +17,25 @@ app.use('/user', (req, res, next) => {
 });
 
 app.get('/poi/:region', (req, res) => {
-		console.log('POT GET');
+		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
+		(error, results, fields) => {
+				if (error) {
+						res.status(500).json({error:error});
+				} else {
+						res.json(results);
+				}
+		});
 });
 
 app.post('/poi/add', (req, res) => {
-		console.log('POI ADD POST ');
+		conn.query(`INSERT INTO pointsofinterest(ID, name, type, country, region, lon, lat, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`, [req.body.ID, req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], 
+		(error, results, fields) => {
+				if (error) {
+						res.status(500).json({error:error});
+				} else {
+						res.json({success});
+				}
+		});
 });
 
 app.get('poi/reccomend/:region', (req, res) => {
