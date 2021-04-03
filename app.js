@@ -8,6 +8,7 @@ require('dotenv').config();
 
 app.use(bodyParser.json());
 app.use(cors());
+app.set("view engine", "ejs");
 const SERVER_PORT=process.env.port;
 
 // own middleware
@@ -53,7 +54,7 @@ app.post('poi/:id/recommend', (req, res) => {
 
 // home page
 app.get('/', (req, res) => {
-		res.send("Home");
+		res.render('')
 });
 
 
