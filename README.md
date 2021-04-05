@@ -36,7 +36,7 @@ Database with 3 tables is created and imported at this point
 - Recommendation will be based on post request where one of the value is going to be increased by 1
 
 **Part B**
-- Firstly using the knowledge from week 3
+- Firstly using the resources from week 3 I will implement asynchronus ajax calls, the web page will include table with ajax, so the user can input region and click submit, this is going to trigger script and make a call to the server 2without any need of reloading
 
 
 
