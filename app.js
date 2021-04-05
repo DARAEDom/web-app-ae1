@@ -9,7 +9,6 @@ require('dotenv').config();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
-app.set("view engine", "ejs");
 const SERVER_PORT=process.env.port;
 
 // own middleware
