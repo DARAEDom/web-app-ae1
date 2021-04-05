@@ -6,6 +6,7 @@ const routes = require('./routes/users');
 const conn = require('./routes/mysqlconn');
 require('dotenv').config(); 
 
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
 app.set("view engine", "ejs");
@@ -16,6 +17,7 @@ app.use('/user', (req, res, next) => {
 		console.log(`Received a request in time ${Date.now()} ms.`);
 		next();
 });
+
 
 app.get('/poi/find/:region', (req, res) => {
 		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
@@ -52,10 +54,6 @@ app.post('poi/:id/recommend', (req, res) => {
 		});
 });
 
-// home page
-app.get('/', (req, res) => {
-		res.render('')
-});
 
 
 // testing 
