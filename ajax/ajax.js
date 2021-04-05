@@ -18,19 +18,19 @@ async function search(query) {
 }
 
 async function ajaxSearchJson(productType) { // async with JSON
- 20     const response = await fetch(`https://example.com/api/product/${productType}`);
- 21         const products = await response.json();
- 22 
- 23         let html ="";
- 24         products.forEach(product => {
- 25             html += `Product Name: ${product.name} Manufacturer: ${product.manufacturer} Price: ${product.price} <br />`;
- 26 
- 27 });
- 28         document.getElementById('results').innerHTML = html;
- 29 }
- 30 // }
- 31 
- 32 document.getElementById('ajaxButton').addEventListener('click', () => {
- 33         const product = document.getElementById('productType').value;
- 34         ajaxSearch(product);
- 35         });
+     const response = await fetch(`https://example.com/api/product/${productType}`);
+          const products = await response.json();
+  
+          let html ="";
+          products.forEach(product => {
+              html += `Product Name: ${product.name} Manufacturer: ${product.manufacturer} Price: ${product.price} <br />`;
+  
+  });
+          document.getElementById('results').innerHTML = html;
+  }
+  // }
+  
+  document.getElementById('ajaxButton').addEventListener('click', () => {
+          const product = document.getElementById('productType').value;
+          ajaxSearch(product);
+          });
