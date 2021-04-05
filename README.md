@@ -37,7 +37,7 @@ Database with 3 tables is created and imported at this point
 
 **Part B**
 - Firstly using the resources from week 3 I will implement asynchronus ajax calls, the web page will include table with ajax, so the user can input region and click submit, this is going to trigger script and make a call to the server 2without any need of reloading
-
+While trying to get ajax to work I have experienced issues with JavaScript addEventListener to submit button which is activateing the script, the issue is probably caused by page loading and making a call with null value which auto breaks the script
 
 
 
