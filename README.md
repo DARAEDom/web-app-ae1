@@ -34,3 +34,14 @@ Database with 3 tables is created and imported at this point
 - Add Create app.get with address ``/poi/find/:region`` and create connection with database, in this case we need region that will be recieved from req.params.region and passed to the connetcion query
 - ``/poi/add`` will create new record to pointsofinterest and if it is successful, repsond with message
 - Recommendation will be based on post request where one of the value is going to be increased by 1
+
+**Part B**
+- Firstly using the knowledge from week 3
+
+
+
+
+*Things to think about*:
+- The same-origin policy (with CORS)
+- Promises
+- aync/await calls 
