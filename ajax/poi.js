@@ -1,7 +1,7 @@
 // add env port variable 
 
 async function ajaxSearch(query) { // async with JSON
-		const response = await fetch(`https://localhost:8080/${}`); 
+		const response = await fetch(`https://localhost:8080/poi/find/${query}`); 
 		const contents = await response.json();
 		let html = "";
 		
@@ -11,7 +11,7 @@ async function ajaxSearch(query) { // async with JSON
 		document.getElementById('results').innerHTML = html;
 }
 
-document.getElementById('findButton').addEventListener('click', () => {
-		const searchQuery = document.getElementById('input').value;
+document.getElementById('sendButton').addEventListener('click', () => {
+		const searchQuery = document.getElementById('inputQuery').value;
 		ajaxSearch(searchQuery);
 });
