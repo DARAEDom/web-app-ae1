@@ -9,7 +9,7 @@ require('dotenv').config();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
-const SERVER_PORT=process.env.port;
+const serverPort=process.env.SERVER_PORT;
 
 // own middleware
 app.use('/user', (req, res, next) => {
@@ -82,8 +82,5 @@ app.use('/user', routes);
 //				console.log(`App is running at http://localhost:${PORT}`)
 //});
 
-console.log(`Server is running on http://localhost:8080`);
-app.listen(8080);
-
-//console.log(`Server is running on http://localhost:${SERVER_PORT}`);
-//app.listen(SERVER_PORT);
+console.log(`Server is running on http://localhost:${process.env.SERVER_PORT}`);
+app.listen(serverPort);
