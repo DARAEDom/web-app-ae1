@@ -1,23 +1,40 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const routes = require('./routes/users');
 const path = require('path');
-const conn = require('./routes/mysqlconn');
 const ejs = require("ejs");
+
+const serverPort=process.env.SERVER_PORT;
+const conn = require('./routes/mysqlconn');
+const routes = require('./routes/users');
+
 require('dotenv').config(); 
+const app = express();
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
 app.set("view engine", "ejs");
-const serverPort=process.env.SERVER_PORT;
+//app.use(express.static(path.join(__dirname, "public"))); // CSS file, not sure
 
 // own middleware
 app.use('/user', (req, res, next) => {
 		console.log(`Received a request in time ${Date.now()} ms.`);
 		next();
+});
+
+
+app.get('/poi2/find/:region', (req, res) => {
+		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
+		(error, results, fields) => {
+				if (error) {
+						res.status(500).json({error:error});
+				} else {
+						res.render("page", {
+								results: results
+						});
+				}
+		});
 });
 
 

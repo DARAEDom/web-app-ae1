@@ -42,6 +42,9 @@ Database with 3 tables is created and imported at this point
 - Task 5 requires sending post request through ajax which is different than regular GET request.
 
 
+**Change of the plan**:
+- Knowing that html can be used to display contents, I decided to change my direction and instead use ejs technology to use back-end to render the pages and display data, I find it more comfortable
+
 
 *Things to think about*:
 - The same-origin policy (with CORS)
