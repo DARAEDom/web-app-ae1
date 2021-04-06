@@ -25,6 +25,23 @@
 		                        <th scope="col">Recomendations</th>
 		                </tr>
 		        </thead>
+				<%
+					results.forEach(results =>{
+				%>
+				<tbody>
+				        <tr>
+							<td> <%= results.name %> </td>
+							<td> <%= results.region %> </td>
+							<td> <%= results.type %> </td>
+							<td> <%= results.country %> </td>
+							<td> <%= results.lon %> </td>
+							<td> <%= results.lat %> </td>
+							<td> <%= results.description%> </td>
+							<td> <%= results.recommendations %> </td>
+							<td> <form method="POST" action="/poi/:<%= results.ID %><recommend></recommend>
+<button> Recommend</button> </form>  </td>
+				        </tr>
+				</tbody>
 		</table>
 
 		<label for="nameIn"> Name</label>

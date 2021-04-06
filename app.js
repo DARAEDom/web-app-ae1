@@ -60,7 +60,7 @@ app.post('/poi/add', (req, res) => {
 		});
 });
 
-app.post('poi/:id/recommend', (req, res) => {
+app.post('/poi/:id/recommend', (req, res) => {
 		conn.query(`UPDATE pointsofinterest SET recommendations=recommendations+1 WHERE id=?`, [req.params.id],
 		(error, results, fields) => {
 				if(error) {
