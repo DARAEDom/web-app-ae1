@@ -2,16 +2,30 @@
 <html lang="en">
 <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>AE1 EJS</title>
+        <script src="./poi.js"></script>
 </head>
 <body>
        <p>Hello World!</p> 
 		<label for="regionInput"> Region </label>
 		<input type="text" id="inputQuery"> <br>
+		<button onclick="activateAjax()"></button>
 		<input type="submit" id="sendButton" value="Submit"> <br><br>
 
-		<p id="results"> Results </p>	
-
+		<table>
+		        <thead>
+		                <tr>
+		                        <th scope="col">Name</th>
+		                        <th scope="col">Region</th>
+		                        <th scope="col">Type</th>
+		                        <th scope="col">Country</th>
+		                        <th scope="col">Longitude</th>
+		                        <th scope="col">Latitude</th>
+		                        <th scope="col">Description</th>
+		                        <th scope="col">Recomendations</th>
+		                </tr>
+		        </thead>
+		</table>
 
 		<label for="nameIn"> Name</label>
 		<input type="text" id="nameIn"> <br>

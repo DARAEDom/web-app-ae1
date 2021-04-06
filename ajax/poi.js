@@ -24,4 +24,10 @@ async function ajaxSearch(query) { // async with JSON
 		
 //document.getElementById('sendButton').addEventListener('click', window.onload=function(){document.getElementById("results").innerHTML = "Hello, World!" });
 
-window.onload=document.getElementById('sendButton').addEventListener('click', function(){document.getElementById("results").innerHTML = "Hello, World!" });
+//window.onload=document.getElementById('sendButton').addEventListener('click', function(){document.getElementById("results").innerHTML = "Hello, World!" });
+
+function activateAjax() {
+		const searchQuery = document.getElementById('inputQuery').value;
+		ajaxSearch(searchQuery);
+					
+}
