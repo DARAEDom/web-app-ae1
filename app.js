@@ -3,12 +3,15 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const routes = require('./routes/users');
+const path = require('path');
 const conn = require('./routes/mysqlconn');
+const ejs = require("ejs");
 require('dotenv').config(); 
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
+app.set("view engine", "ejs");
 const serverPort=process.env.SERVER_PORT;
 
 // own middleware
