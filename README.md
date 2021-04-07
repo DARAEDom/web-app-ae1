@@ -44,7 +44,7 @@ Database with 3 tables is created and imported at this point
 
 **Change of the plan**:
 - Knowing that html can be used to display contents, I decided to change my direction and instead use ejs technology to use back-end to render the pages and display data, I find it more comfortable
-
+ejs is included in npm as a additional module, which has to be installed
 
 *Things to think about*:
 - The same-origin policy (with CORS)
