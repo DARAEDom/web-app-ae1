@@ -7,6 +7,7 @@ const ejs = require("ejs");
 const serverPort=process.env.SERVER_PORT;
 const conn = require('./routes/mysqlconn');
 const routes = require('./routes/users');
+const dataRouter = require('./routes/dataRouter');
 
 require('dotenv').config(); 
 const app = express();
@@ -23,6 +24,10 @@ app.use('/user', (req, res, next) => {
 		next();
 });
 
+app.get("/home", (req, res) => {
+		res.render("page");
+})
+
 
 app.get('/poi2/find/:region', (req, res) => {
 		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
@@ -38,16 +43,16 @@ app.get('/poi2/find/:region', (req, res) => {
 });
 
 
-app.get('/poi/find/:region', (req, res) => {
-		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
-		(error, results, fields) => {
-				if (error) {
-						res.status(500).json({error:error});
-				} else {
-						res.json(results);
-				}
-		});
-});
+//app.get('/poi/find/:region', (req, res) => {
+//		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
+//		(error, results, fields) => {
+//				if (error) {
+//						res.status(500).json({error:error});
+//				} else {
+//						res.json(results);
+//				}
+//		});
+//});
 
 app.post('/poi/add', (req, res) => {
 		conn.query(`INSERT INTO pointsofinterest(ID, name, type, country, region, lon, lat, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`, [req.body.ID, req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], 
@@ -90,17 +95,7 @@ app.post('/posttest', (req, res) => {
 
 app.use('/user', routes);
 
-//				app.get('/map/:lat/:lon', (req, res) => {
-//						console.log(`/map GET method, ${req.params.lat}, ${req.params.lon}`)
-//				});
-//
-//				app.post('/map/add', (res, res) => {
-//					console.log(`/map/add POST method, ${req.body.title}`)
-//				});
-//
-//				app.listen(PORT);
-//				console.log(`App is running at http://localhost:${PORT}`)
-//});
+app.use('/poi', dataRouter);
 
-console.log(`Server is running on http://localhost:${process.env.SERVER_PORT}`);
+console.log(`Server is running on http://localhost:${process.env.SERVER_PORT}/`);
 app.listen(serverPort);
