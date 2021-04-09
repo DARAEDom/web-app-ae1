@@ -31,7 +31,7 @@ app.get('/home', (req, res) => {
 								res.status(500).json({error:error});
 						} else {
 								res.render('home', {
-										results:results
+										root:results
 								});
 						}
 				}

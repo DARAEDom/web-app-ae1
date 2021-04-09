@@ -27,19 +27,19 @@
 	                </tr>
 	        </thead>
 			<%
-				results.forEach(content =>{
+				root.forEach(content =>{
 			%>
 			<tbody>
 			        <tr>
 							<td> <%= content.name %> </td>
 							<td> <%= content.region %> </td>
 							<td> <%= content.type %> </td>
-							<td> <%= contetn.country %> </td>
-							<td> <%= contetn.lon %> </td>
+							<td> <%= content.country %> </td>
+							<td> <%= content.lon %> </td>
 							<td> <%= content.lat %> </td>
 							<td> <%= content.description%> </td>
 							<td> <%= content.recommendations %> </td>
-							<td> <form method="POST" action="/poi/:<%= content.ID %><recommend></recommend>
+							<td> <form method="POST" action="/poi/:<%= content.ID %>"<input type="button">Recommend</input></form></td>
 			        </tr>
 			</tbody>
 			<% }); %>
