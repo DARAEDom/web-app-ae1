@@ -8,5 +8,5 @@ async function ajaxRecom(query) {
 
 function recommend(id) {
 		console.log(id);
-		//ajaxRecom(id);
+		ajaxRecom(id);
 }
