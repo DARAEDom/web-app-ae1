@@ -3,13 +3,14 @@
 <head>
         <meta charset="UTF-8">
         <title>Assessment - Home Page</title>
+        <script src="../ajax/recom.js"></script>
 </head>
 <body>
       <h1>Welcome</h1>  
 		
 <div>
-		<p><a href=""></a></p>
-		<p><a href=""></a></p>
+		<p><a href=""></a>TEXT</p>
+		<p><a href=""></a>TEXT 2</p>
 </div>
 
 	<div>
@@ -39,7 +40,7 @@
 							<td> <%= content.lat %> </td>
 							<td> <%= content.description%> </td>
 							<td> <%= content.recommendations %> </td>
-							<td> <form method="POST" action="/poi/:<%= content.ID %>"<input type="button">Recommend</input></form></td>
+							<td> <form method="POST" action="recommend(<%= content.ID %>)"><button>Recommend</button></form></td>
 			        </tr>
 			</tbody>
 			<% }); %>
