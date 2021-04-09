@@ -19,15 +19,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({extended: true}));
 
 // own middleware
-app.use('/user', (req, res, next) => {
-		console.log(`Received a request in time ${Date.now()} ms.`);
-		next();
-});
-
-app.get("/home", (req, res) => {
-		res.render("page");
-})
-
+//app.use('/user', (req, res, next) => {
+//		console.log(`Received a request in time ${Date.now()} ms.`);
+//		next();
+//});
 
 app.get('/poi2/find/:region', (req, res) => {
 		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
@@ -98,4 +93,4 @@ app.use('/user', routes);
 app.use('/poi', dataRouter);
 
 console.log(`Server is running on http://localhost:${process.env.SERVER_PORT}/`);
-app.listen(serverPort);
+app.listen(8080);

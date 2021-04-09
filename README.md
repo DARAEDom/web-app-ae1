@@ -41,7 +41,6 @@ Database with 3 tables is created and imported at this point
 - Skipping the issues with the previous task, I will have to prepare a table containing all the fields that are required to meet all the requirements
 - Task 5 requires sending post request through ajax which is different than regular GET request.
 
-
 **Change of the plan**:
 - Knowing that html can be used to display contents, I decided to change my direction and instead use ejs technology to use back-end to render the pages and display data, I find it more comfortable
 ejs is included in npm as a additional module, which has to be installed

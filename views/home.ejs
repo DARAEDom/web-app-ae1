@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Assessment - Home Page</title>
+</head>
+<body>
+      <h1>Welcome</h1>  
+		
+	<div>
+	        <thead>
+	                <tr>
+		                        <th scope="col">Name</th>
+		                        <th scope="col">Region</th>
+		                        <th scope="col">Type</th>
+		                        <th scope="col">Country</th>
+		                        <th scope="col">Longitude</th>
+		                        <th scope="col">Latitude</th>
+		                        <th scope="col">Description</th>
+		                        <th scope="col">Recomendations</th>
+	                </tr>
+	        </thead>
+			<tbody>
+			        <tr>
+							<td> <%= results.name %> </td>
+							<td> <%= results.region %> </td>
+							<td> <%= results.type %> </td>
+							<td> <%= results.country %> </td>
+							<td> <%= results.lon %> </td>
+							<td> <%= results.lat %> </td>
+							<td> <%= results.description%> </td>
+							<td> <%= results.recommendations %> </td>
+							<td> <form method="POST" action="/poi/:<%= results.ID %><recommend></recommend>
+			        </tr>
+			</tbody>
+	</div>
+</body>
+</html>
