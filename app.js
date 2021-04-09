@@ -24,6 +24,20 @@ app.use(express.urlencoded({extended: true}));
 //		next();
 //});
 
+app.get('/home', (req, res) => {
+		conn.query(`SELECT * FROM pointsofinterest ORDER BY ID LIMIT 10`, 
+				(error, results, fields) => {
+						if (error) {
+								res.status(500).json({error:error});
+						} else {
+								res.render('home', {
+										results:results
+								});
+						}
+				}
+		);
+});
+
 app.get('/poi2/find/:region', (req, res) => {
 		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
 		(error, results, fields) => {

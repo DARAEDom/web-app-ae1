@@ -7,7 +7,13 @@
 <body>
       <h1>Welcome</h1>  
 		
+<div>
+		<p><a href=""></a></p>
+		<p><a href=""></a></p>
+</div>
+
 	<div>
+		<table>
 	        <thead>
 	                <tr>
 		                        <th scope="col">Name</th>
@@ -20,6 +26,9 @@
 		                        <th scope="col">Recomendations</th>
 	                </tr>
 	        </thead>
+			<%
+				results.forEach(results =>{
+			%>
 			<tbody>
 			        <tr>
 							<td> <%= results.name %> </td>
@@ -33,6 +42,8 @@
 							<td> <form method="POST" action="/poi/:<%= results.ID %><recommend></recommend>
 			        </tr>
 			</tbody>
+			<% }); %>
+		</table>
 	</div>
 </body>
 </html>
