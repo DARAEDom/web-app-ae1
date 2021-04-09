@@ -27,19 +27,19 @@
 	                </tr>
 	        </thead>
 			<%
-				results.forEach(results =>{
+				results.forEach(content =>{
 			%>
 			<tbody>
 			        <tr>
-							<td> <%= results.name %> </td>
-							<td> <%= results.region %> </td>
-							<td> <%= results.type %> </td>
-							<td> <%= results.country %> </td>
-							<td> <%= results.lon %> </td>
-							<td> <%= results.lat %> </td>
-							<td> <%= results.description%> </td>
-							<td> <%= results.recommendations %> </td>
-							<td> <form method="POST" action="/poi/:<%= results.ID %><recommend></recommend>
+							<td> <%= content.name %> </td>
+							<td> <%= content.region %> </td>
+							<td> <%= content.type %> </td>
+							<td> <%= contetn.country %> </td>
+							<td> <%= contetn.lon %> </td>
+							<td> <%= content.lat %> </td>
+							<td> <%= content.description%> </td>
+							<td> <%= content.recommendations %> </td>
+							<td> <form method="POST" action="/poi/:<%= content.ID %><recommend></recommend>
 			        </tr>
 			</tbody>
 			<% }); %>
