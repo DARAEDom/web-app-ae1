@@ -1,4 +1,4 @@
-const port = process.env.port
+const port = 8080
 
 async function ajaxRecom(query) { 
 		const response = await fetch(`https://localhost:${port}/poi/${query}/recommend`); 
@@ -7,5 +7,6 @@ async function ajaxRecom(query) {
 }
 
 function recommend(id) {
-		ajaxRecom(id);
+		console.log(id);
+		//ajaxRecom(id);
 }
