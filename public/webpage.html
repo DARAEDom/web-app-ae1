@@ -11,6 +11,20 @@
 		<input type="text" id="inputQuery"> <br>
 		<input type="submit" id="sendButton" value="Submit"> <br><br>
 
+		<script>
+			
+			async function ajaxSearch(query) { // async with JSON
+				const response = await fetch(`https://localhost:8080/poi/find/${query}`); 
+				const contents = await response.json();
+				let queryResults = "";
+		
+				contents.forEach( result => {
+					queryResults += `Name: ${result.name}, Region: ${result.region}, Type: ${result.type}, Country: ${result.country}, Longitude: ${result.lon}, Latitude: ${result.lat}, Description: ${result.description} <br/>`
+		});
+		document.getElementById('results').innerHTML = queryResults;
+}
+		</script>
+
 		<p id="results"> Results </p>	
 
 
@@ -28,6 +42,28 @@
 		<input type="text" id="latIn"> <br>
 		<label for="desIn"> Description</label>
 		<input type="text" id="desIn"> <br>
-		<input type="submit" id="sendIn" value="Add In!"> <br> <br>
+		<input type="submit" onsubmit=saveData() id="sendIn" value="Add In!"> <br> <br>
+		<script>
+
+				async function saveData() {
+						const contents = {
+								name: document.getElementById("nameIn").value,
+								region: document.getElementById("regionIn").value,
+								type: document.getElementById("typeIn").value,
+								country: document.getElementById("countryIn").value,
+								lon: document.getElementById("lonIn").value,
+								lat: document.getElementById("latIn").value,
+								description: document.getElementById("desIn").value
+						}
+						console.log(contents);
+						const response = await fetch(`http://localhost:8080/poi/add`, {
+							method:'POST',
+							headers: {
+								'Content-Type': 'application/json'},
+											body: JSON.stringify(contents)
+										});
+				}	
+
+		</script>
 </body>
 </html>
