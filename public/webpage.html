@@ -5,11 +5,20 @@
         <title>AE1 HTML</title>
         <script src="./poi.js"></script>
 		<script type=text/javascript>
+
 				async function search() {
-					console.log("async function");					
+					console.log("async search function");					
+					const region = document.getElementById('inputQuery').value;
+					console.log(region);
+					const response = await fetch(`/poi/find/${region}`);
+					const results = await response.json();
+					console.log(results);
+
+										results.forEach(element => {repnode(element)});
 				}
 				
 				function repnode(ajaxArray) {
+					console.log(ajaxArray);
 					const IdRepElem = [document.getElementById('searchTd0'),
 										document.getElementById('searchTd1'),
 										document.getElementById('searchTd2'),
@@ -19,14 +28,14 @@
 										document.getElementById('searchTd6'),
 										document.getElementById('searchTd7')
 									];
+					const trId = document.getElementById('');
 
-					const repElem = document.createElement("td");
-
-					const repText = document.createTextNode(ajaxArray);
-
+					const repElem = document.createElement("tr");
+					ajaxArray.forEach(elem => {
+											const repText = document.createTextNode(elem);
 					repElem.appendChild(repText);
-
-					document.body.replaceChild(repElem, IdRepElem);
+});
+					document.body.replaceChild(repElem, trId);
 				}
 		</script>
 </head>
@@ -34,7 +43,7 @@
        <p>Hello World!</p> 
 		<label for="regionInput"> Region </label>
 		<input type="text" id="inputQuery"> <br>
-		<input type="submit" onclick="add()" id="sendButton" value="Submit"> <br><br>
+		<input type="submit" onclick="search()" id="sendButton" value="Submit"> <br><br>
 
 		<div <!--style="visibility: hidden"-->
 		        <table>
@@ -51,7 +60,7 @@
 							</tr>
 						</thead>
 		                <tbody>
-							<tr>
+							<tr id="trId">
 							        <td id="searchTd0">text0</td>
 							        <td id="searchTd1">text1</td>
 							        <td id="searchTd2">text2</td>

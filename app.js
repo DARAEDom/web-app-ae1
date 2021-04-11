@@ -38,15 +38,15 @@ app.get('/home', (req, res) => {
 		);
 });
 
-app.get('/poi2/find/:region', (req, res) => {
+app.get('/poi/find/:region', (req, res) => {
 		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
 		(error, results, fields) => {
 				if (error) {
 						res.status(500).json({error:error});
 				} else {
-						res.render("page", {
-								results: results
-						});
+						res.json(
+								results
+						);
 				}
 		});
 });
