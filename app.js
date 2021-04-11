@@ -64,6 +64,7 @@ app.get('/poi/find/:region', (req, res) => {
 //});
 
 app.post('/poi/add', (req, res) => {
+		console.log(req.params.name);
 		conn.query(`INSERT INTO pointsofinterest( name, type, country, region, lon, lat, description) VALUES(?, ?, ?, ?, ?, ?, ?)`, [req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], 
 		(error, results, fields) => {
 				if (error) {
@@ -108,3 +109,16 @@ app.use('/poi', dataRouter);
 
 console.log(`Server is running on http://localhost:${process.env.SERVER_PORT}/`);
 app.listen(8080);
+
+function checkJSON(json) {
+	try {
+			const jsonCheck = JSON.parse(json);
+
+			if (jsonCheck && typeof jsonCheck === "object") {
+					return jsonCheck;
+		}
+	} catch (e) {
+			console.log(`Error: JSON Check failed ${e}`);
+			return false;
+	}
+}

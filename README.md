@@ -41,6 +41,11 @@ Database with 3 tables is created and imported at this point
 - Skipping the issues with the previous task, I will have to prepare a table containing all the fields that are required to meet all the requirements
 - Task 5 requires sending post request through ajax which is different than regular GET request.
 
+** Part B ** - task 5 and 6 working
+- task 5, Add users points of interests into the database, Firstly we need to collect all the required data from the user: name, region, type, country, longitude, latitude and description (ID is going to be auto-generated and recommendation will start from 0),
+- The ajax is responsible for collecting all the data from the inputs, and pack them into one variable, later on it is going to be asynchronously fetch to the API access point and added to the database in JSON format. 
+- task 6, it will require table to display all the data, at the time of writing this sentence, my plan is to make table witihn hidden div, and whenever user will search for the result, div is going to be make visiable, with all the results in it. This requires working search algorithm (which for the time being I do not possess), however, I was able to build working add recommendation button, which works. 
+
 **Change of the plan**:
 - Knowing that html can be used to display contents, I decided to change my direction and instead use ejs technology to use back-end to render the pages and display data, I find it more comfortable
 ejs is included in npm as a additional module, which has to be installed
