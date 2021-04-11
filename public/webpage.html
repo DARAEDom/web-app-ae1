@@ -4,37 +4,62 @@
         <meta charset="UTF-8">
         <title>AE1 HTML</title>
         <script src="./poi.js"></script>
+		<script type=text/javascript>
+				async function search() {
+					console.log("async function");					
+				}
+				
+				function repnode(ajaxArray) {
+					const IdRepElem = [document.getElementById('searchTd0'),
+										document.getElementById('searchTd1'),
+										document.getElementById('searchTd2'),
+										document.getElementById('searchTd3'),
+										document.getElementById('searchTd4'),
+										document.getElementById('searchTd5'),
+										document.getElementById('searchTd6'),
+										document.getElementById('searchTd7')
+									];
+
+					const repElem = document.createElement("td");
+
+					const repText = document.createTextNode(ajaxArray);
+
+					repElem.appendChild(repText);
+
+					document.body.replaceChild(repElem, IdRepElem);
+				}
+		</script>
 </head>
 <body>
        <p>Hello World!</p> 
 		<label for="regionInput"> Region </label>
 		<input type="text" id="inputQuery"> <br>
-		<input type="submit" onclick="search()" id="sendButton" value="Submit"> <br><br>
+		<input type="submit" onclick="add()" id="sendButton" value="Submit"> <br><br>
 
-		<div style="display: none">
+		<div <!--style="visibility: hidden"-->
 		        <table>
 		                <thead>
 							<tr>
-							        <th></th>
-							        <th></th>
-							        <th></th>
-							        <th></th>
-							        <th></th>
-							        <th></th>
-							        <th></th>
-							        <th></th>
+							        <th>Name</th>
+							        <th>Region</th>
+							        <th>Type</th>
+							        <th>Country</th>
+							        <th>Longitude</th>
+							        <th>Latitude</th>
+							        <th>Description</th>
+							        <th>Recomendations</th>
 							</tr>
 						</thead>
 		                <tbody>
 							<tr>
-							        <td></td>
-							        <td></td>
-							        <td></td>
-							        <td></td>
-							        <td></td>
-							        <td></td>
-							        <td></td>
-							        <td></td>
+							        <td id="searchTd0">text0</td>
+							        <td id="searchTd1">text1</td>
+							        <td id="searchTd2">text2</td>
+							        <td id="searchTd3">text3</td>
+							        <td id="searchTd4">text4</td>
+							        <td id="searchTd5">text5</td>
+							        <td id="searchTd6">text6</td>
+							        <td id="searchTd7">text7</td>
 							</tr>
 						</tbody>
 		        </table>
