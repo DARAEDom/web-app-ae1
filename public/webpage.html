@@ -9,8 +9,36 @@
        <p>Hello World!</p> 
 		<label for="regionInput"> Region </label>
 		<input type="text" id="inputQuery"> <br>
-		<input type="submit" id="sendButton" value="Submit"> <br><br>
+		<input type="submit" onclick="search()" id="sendButton" value="Submit"> <br><br>
 
+		<div style="display: none">
+		        <table>
+		                <thead>
+							<tr>
+							        <th></th>
+							        <th></th>
+							        <th></th>
+							        <th></th>
+							        <th></th>
+							        <th></th>
+							        <th></th>
+							        <th></th>
+							</tr>
+						</thead>
+		                <tbody>
+							<tr>
+							        <td></td>
+							        <td></td>
+							        <td></td>
+							        <td></td>
+							        <td></td>
+							        <td></td>
+							        <td></td>
+							        <td></td>
+							</tr>
+						</tbody>
+		        </table>
+		</div>
 		<script>
 			
 			async function ajaxSearch(query) { // async with JSON
