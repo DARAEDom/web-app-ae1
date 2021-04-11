@@ -28,14 +28,38 @@
 										document.getElementById('searchTd6'),
 										document.getElementById('searchTd7')
 									];
-					const trId = document.getElementById('');
+					const trId = document.getElementById('trId');
 
 					const repElem = document.createElement("tr");
-					ajaxArray.forEach(elem => {
+					Object.values(ajaxArray).forEach(elem => {
 											const repText = document.createTextNode(elem);
 					repElem.appendChild(repText);
 });
 					document.body.replaceChild(repElem, trId);
+
+
+				async function addNewData() {
+								
+				}
+
+				async function saveData() {
+						const contents = {
+								name: document.getElementById("nameIn").value,
+								region: document.getElementById("regionIn").value,
+								type: document.getElementById("typeIn").value,
+								country: document.getElementById("countryIn").value,
+								lon: document.getElementById("lonIn").value,
+								lat: document.getElementById("latIn").value,
+								description: document.getElementById("desIn").value
+						}
+						console.log(contents);
+						const response = await fetch(`http://localhost:8080/poi/add`, {
+							method:'POST',
+							headers: {
+								'Content-Type': 'application/json'},
+											body: JSON.stringify(contents)
+										});
+				}	
 				}
 		</script>
 </head>
@@ -105,27 +129,6 @@
 		<label for="desIn"> Description</label>
 		<input type="text" id="desIn"> <br>
 		<input type="submit" onsubmit=saveData() id="sendIn" value="Add In!"> <br> <br>
-		<script>
 
-				async function saveData() {
-						const contents = {
-								name: document.getElementById("nameIn").value,
-								region: document.getElementById("regionIn").value,
-								type: document.getElementById("typeIn").value,
-								country: document.getElementById("countryIn").value,
-								lon: document.getElementById("lonIn").value,
-								lat: document.getElementById("latIn").value,
-								description: document.getElementById("desIn").value
-						}
-						console.log(contents);
-						const response = await fetch(`http://localhost:8080/poi/add`, {
-							method:'POST',
-							headers: {
-								'Content-Type': 'application/json'},
-											body: JSON.stringify(contents)
-										});
-				}	
-
-		</script>
 </body>
 </html>
