@@ -64,7 +64,9 @@ app.get('/poi/find/:region', (req, res) => {
 //});
 
 app.post('/poi/add', (req, res) => {
-		console.log(req.params.name);
+		if (checkJSON(req.body.name)) {
+				console.log(`poi/add Success`);
+		
 		conn.query(`INSERT INTO pointsofinterest( name, type, country, region, lon, lat, description) VALUES(?, ?, ?, ?, ?, ?, ?)`, [req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], 
 		(error, results, fields) => {
 				if (error) {
@@ -73,6 +75,9 @@ app.post('/poi/add', (req, res) => {
 						res.json({success:1});
 				}
 		});
+		} else {
+				console.log(`poi/add Fail`);
+		}
 });
 
 app.post('/poi/:id/recommend', (req, res) => {
@@ -121,4 +126,23 @@ function checkJSON(json) {
 			console.log(`Error: JSON Check failed ${e}`);
 			return false;
 	}
+}
+
+function multipleCheckJSON (params) {
+	try {
+			params.forEach(file => {
+					const jsonCheck = JSON.parse(file);
+
+					if (file && typeof file === "object") {
+							return true;
+					} else {
+							return false;
+					}
+			});
+
+	} catch (e) {
+			console.log(`Error: JSON Check failed ${e}`);
+			return false;
+	}
+
 }
