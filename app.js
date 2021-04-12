@@ -131,7 +131,6 @@ function multipleCheckJSON (params) {
 	try {
 			params.forEach(file => {
 					const jsonCheck = JSON.parse(file);
-
 					if (file && typeof file === "object") {
 							return true;
 					} else {
