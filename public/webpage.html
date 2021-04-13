@@ -3,7 +3,9 @@
 <head>
         <meta charset="UTF-8">
         <title>AE1 HTML</title>
-        <script src="./poi.js"></script>
+		<link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'/>
+		<script type='text/javascript' src='https://unpkg.com/leaflet@1.7.1/dist/leaflet.js'></script>
+        <script src="./map.js"></script>
 </head>
 <body>
        <p>Hello World!</p> 
@@ -11,6 +13,8 @@
 		<input type="text" id="inputQuery"> <br>
 		<input type="submit" onclick="clickThatButton()" id="sendButton" value="Submit"> <br><br>
 
+		<div id="map1" style="width:800px; height:600px"> </div>
+		<script type='text/javascript' src='mapapp.js'></script>
 		<script type="text/javascript">
 				try {
 						function clickThatButton() {
@@ -49,9 +53,6 @@ function recommend(id) {
 				} catch (e) {
 						console.log(`Error ${e}`);
 				}
-		</script>
-
-		<script type="text/javascript">
 
 			async function ajaxSearch(query) { // async with JSON
 				const response = await fetch(`https://localhost:8080/poi/find/${query}`); 
@@ -95,6 +96,9 @@ function recommend(id) {
 					repElem.appendChild(repText);
 });
 					document.body.replaceChild(repElem, trId);
+				}} catch(e) {
+					console.log(`Error: ${e}`);
+								}
 
 		</script>
 
