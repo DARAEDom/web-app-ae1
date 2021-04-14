@@ -51,17 +51,18 @@ app.get('/poi/find/:region', (req, res) => {
 		});
 });
 
-
-//app.get('/poi/find/:region', (req, res) => {
-//		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
-//		(error, results, fields) => {
-//				if (error) {
-//						res.status(500).json({error:error});
-//				} else {
-//						res.json(results);
-//				}
-//		});
-//});
+app.get('/poi/find/recent/region', (req, res) => {
+		conn.query(`SELECT * FROM pointsofinterest WHERE region=? ORDER BY ID DESC LIMIT 10`, [req.params.region],
+		(error, results, fields) => {
+				if (error) {
+						res.status(500).json({error:error});
+				} else {
+						res.json(
+								results
+						);
+				}
+		});
+});
 
 app.post('/poi/add', (req, res) => {
 	//	if (checkJSON(req.body.name)) {
@@ -91,21 +92,6 @@ app.post('/poi/:id/recommend', (req, res) => {
 				}
 		});
 });
-
-
-
-// testing 
-app.get('/user/:text' , (req, res) => {
-		console.log(`Parameters: ${req.params.text}`);
-});
-
-app.get('/gettest/:text', (req, res) => {
-		res.send(`Get Method Entered TEXT: ${req.params.text}`);	
-});
-
-app.post('/posttest', (req, res) => {
-		res.send(`Post Method Entered Details: ${req.body.text}`);
-})
 
 app.use('/user', routes);
 
