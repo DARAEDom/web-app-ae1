@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended: true}));
 //		next();
 //});
 
-app.get('/home', (req, res) => {
+app.get('/poi/home', (req, res) => {
 		conn.query(`SELECT * FROM pointsofinterest ORDER BY ID DESC LIMIT 10`, 
 				(error, results, fields) => {
 						if (error) {
