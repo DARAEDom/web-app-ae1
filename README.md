@@ -51,6 +51,8 @@ Database with 3 tables is created and imported at this point
 ejs is included in npm as a additional module, which has to be installed
 
 
+
+
 *Things to think about*:
 - The same-origin policy (with CORS)
 - Promises
