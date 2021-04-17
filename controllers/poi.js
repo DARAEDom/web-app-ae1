@@ -16,7 +16,7 @@ exports.home = async(req, res) => {
 					}
 			);
 		} catch (e) {
-
+			console.log(`Error ${e} has occured`);
 		}
 }
 
@@ -38,12 +38,16 @@ exports.recommend = async(req, res) => {
 }
 
 exports.search = async(req, res) => {
+		try {
 		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
-		(error, results, fields) => {
+			(error, results, fields) => {
 				if (error) {
 						res.status(500).json({error:error});
 				} else {
 						res.json(results);
 				}
 		});
+		} catch (e) {
+			console.log(`Error ${e} has occured`);
+		}
 }

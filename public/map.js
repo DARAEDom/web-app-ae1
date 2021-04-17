@@ -1,17 +1,25 @@
-const map = L.map ("map1");
+function map() {
+	initMap();	
+}
 
-const attrib="Map data copyright OpenStreetMap contributors, Open Database Licence";
+function initMap{
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: attrib } ).addTo(map);
+	const map = L.map ("map1");
 
-const pos = [50.9, -1.4];            
-map.setView(pos, 14);
+	const attrib="Map data copyright OpenStreetMap contributors, Open Database Licence";
 
-L.marker(pos).addTo(map);
-map.on("click", e => {
-	L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
-	console.log(`You clicked at:${e.latlng.lat} ${e.latlng.lng}`);
-});
+	L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: attrib } ).addTo(map);
+
+	const pos = [50.9, -1.4];            
+	map.setView(pos, 14);
+
+	L.marker(pos).addTo(map);
+	map.on("click", e => {
+		L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+		console.log(`You clicked at:${e.latlng.lat} ${e.latlng.lng}`);
+	});
+}
+
 
 const solent = L.circle([50.9079, -1.4015], { radius:100, fillColor: 'blue',
                                 color: 'red', opacity: 0.5 }).addTo(map);
