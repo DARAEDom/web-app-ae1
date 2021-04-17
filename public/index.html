@@ -8,9 +8,10 @@
 </head>
 <body>
 		<h4> Search for Point of interest</h4>
-       	<label for="search">Insert region name:</label>
-       	<input type="text" id="searchHtml"> 
-       	<input type="button" onclick="map()"> 
+		<label for="regionInput"> Region </label>
+		<input type="text" id="inputQuery"> <br>
+		<input type="submit" onclick="clickThatButton()" id="sendButton" value="Submit"> <br><br>
+
 		<div id="map1" style="width:800px; height:600px"> </div>
 		<script type='text/javascript' src='map.js'></script>
 </body>
