@@ -1,6 +1,11 @@
 const express = require('express');
 const dataRouter = express.Router();
 const conn = require('./mysqlconn');
+const cors = require('cors');
+
+const poiControl = require('../controllers/poi');
+
+dataRouter.use(cors());
 
 dataRouter.get('/poi/find/:region', (req, res) => {
 		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
@@ -13,6 +18,7 @@ dataRouter.get('/poi/find/:region', (req, res) => {
 		});
 });
 
+// change, currently works for ejs
 dataRouter.get('/poi/home', (req, res) => {
 		conn.query(`SELECT * FROM pointsofinterest ORDER BY ID DESC LIMIT 10`, 
 				(error, results, fields) => {
