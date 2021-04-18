@@ -2,7 +2,7 @@ const bodyParser = require('body-parser');
 const conn = require('../routes/mysqlconn');
 // require router 
 
-exports.home = async(req, res) => {
+exports.recent = async(req, res) => {
 		try {
 			conn.query(`SELECT * FROM pointsofinterest ORDER BY ID DESC LIMIT 10`, 
 					(error, results, fields) => {
@@ -51,5 +51,13 @@ exports.search = async(req, res) => {
 		});
 		} catch (e) {
 			console.log(`Error ${e} has occured`);
+		}
+}
+
+exports.add = async(req, res) => {
+		try {
+
+		} catch (e) {
+				console.log(`Error ${e} has occured`);
 		}
 }
