@@ -20,6 +20,8 @@ exports.home = async(req, res) => {
 		}
 }
 
+// delete, edit ? 
+
 exports.recommend = async(req, res) => {
 		try {
 			conn.query(`UPDATE pointsofinterest SET recommendations=recommendations+1 WHERE id=?`, [req.params.id],

@@ -1,3 +1,23 @@
+function clickThatButton() {
+		const query = document.getElementById("inputQuery").value;
+		dbSearch(query);
+}
+
+async function dbSearch(query) {
+		try {
+			const response = await fetch(`/poi/find/${query}`);
+			const contents = await response.json();
+			Object.values(contents).forEach(value => {
+				console.log(value);
+				let tag = document.createElement('tr');
+				tag.innerHTML = '<td>' + value[0] + '</td>' + '<td>' + value[1] + '</td>' + '<td>' + value[2] + '</td>' +'<td>' + value[3] + '</td>' +'<td>' + value[4] + '</td>' +'<td>' + value[5] + '</td>' +'<td>' + value[6] + '</td>' +'<td>' + value[7] + '</td>' +'<td>' + value[8] + '</td>' + '<td><button onclick(`recommend(${value.ID})`)>Recommend</button></td>'; 
+				document.getElementById("trId").appendChild(tag);
+		});
+		} catch (e) {
+			console.log(`Error ${e} has occured`);
+		}
+}
+
 function map() {
 	initMap();	
 	addModulesToMap();

@@ -7,16 +7,19 @@ const poiControl = require('../controllers/poi');
 
 dataRouter.use(cors());
 
-dataRouter.get('/poi/find/:region', (req, res) => {
-		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
-		(error, results, fields) => {
-				if (error) {
-						res.status(500).json({error:error});
-				} else {
-						res.json(results);
-				}
-		});
-});
+// works
+//dataRouter.get('/poi/find0/:region', (req, res) => {
+//		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
+//		(error, results, fields) => {
+//				if (error) {
+//						res.status(500).json({error:error});
+//				} else {
+//						res.json(results);
+//				}
+//		});
+//});
+
+dataRouter.get('/poi/find/:region', poiControl.search);
 
 // change, currently works for ejs
 dataRouter.get('/poi/home', (req, res) => {
@@ -31,6 +34,11 @@ dataRouter.get('/poi/home', (req, res) => {
 						}
 				}
 		);
+});
+// incorrect format
+dataRouter.get('/poi', (req, res) => {
+		res.send("Hello, World!");
+		console.log("/poi Router");
 });
 
 
