@@ -5,7 +5,7 @@ function clickThatButton() {
 
 async function dbSearch(query) {
 		try {
-			const response = await fetch(`/poi/find/${query}`);
+			const response = await fetch(`http://localhost:8080/poi/find/${query}`);
 			const contents = await response.json();
 			Object.values(contents).forEach(value => {
 				console.log(value);
