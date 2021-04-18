@@ -1,8 +1,9 @@
 function map() {
 	initMap();	
+	addModulesToMap();
 }
 
-function initMap{
+function initMap() {
 	const map = L.map ("map1");
 
 	const attrib="Map data copyright OpenStreetMap contributors, Open Database Licence";
