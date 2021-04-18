@@ -41,11 +41,5 @@ dataRouter.get('/poi/home', (req, res) => {
 				}
 		);
 });
-// incorrect format
-dataRouter.get('/poi', (req, res) => {
-		res.send("Hello, World!");
-		console.log("/poi Router");
-});
-
 
 module.exports = dataRouter;
