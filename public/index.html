@@ -12,8 +12,38 @@
 		<input type="text" id="inputQuery"> <br>
 		<input type="submit" onclick="searchButton()" id="sendButton" value="Submit"> <br><br>
 
-		<div id="map1" style="width:800px; height:600px"> </div>
-		<script type='text/javascript' src='functions.js'></script>
+		<div>
+		        <div>
+					<table>
+	        			<thead>
+	               			<tr>
+		                        <th scope="col">Name</th>
+		                        <th scope="col">Region</th>
+		                        <th scope="col">Type</th>
+		                        <th scope="col">Country</th>
+		                        <th scope="col">Longitude</th>
+		                        <th scope="col">Latitude</th>
+		                        <th scope="col">Description</th>
+		                        <th scope="col">Recomendations</th>
+	                		</tr>
+	        			</thead>
+					<tbody>
+			        	<tr>
+							<td> <%= content.name %> </td>
+							<td> <%= content.region %> </td>
+							<td> <%= content.type %> </td>
+							<td> <%= content.country %> </td>
+							<td> <%= content.lon %> </td>
+							<td> <%= content.lat %> </td>
+							<td> <%= content.description%> </td>
+							<td> <%= content.recommendations %> </td>
+							<td> <button onclick="recommend(<%= content.ID %>)">Recommend</button></td>
+			        	</tr>
+				</tbody>
+		</div>
+				<div id="map1" style="width:800px; height:600px"> </div>
+				<script type='text/javascript' src='functions.js'></script>
+		</div>
 
 		<label for="nameIn"> Name</label>
 		<input type="text" id="nameIn"> <br>
