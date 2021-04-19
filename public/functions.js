@@ -78,6 +78,7 @@ async function dbSearch(query) {
 					console.log(arrayValue);
 					addRows(arrayValue);
 				})});
+			checkRows();
 			//const response = await fetch(`/poi/find/${query}`);
 			//const jsonContents = await response.json();
 			//const contents = Object.values(jsonContents); 
@@ -122,14 +123,21 @@ function addRows(contents) {
 	newCell4.appendChild(newText4);
 	newCell5.appendChild(newText5);
 	newCell6.appendChild(newText6);
-	newCell7.appendChild(newText7);
-
-
-
 	//for(i = 0; i < contents.length; i++) {
 	//	let newText = document.createTextNode(contents[i]);
 	//	newCell.appendChild(newText);
 	//}
+}
+
+function checkRows() {
+	const tbodyElement = document.getElementById('tbodyResults');
+//	tbodyElement.childNodes.forEach ( childNode => {
+//			tbodyElement.removeChild('tr');
+//});
+	while(tbodyElement.firstChild) {
+//		tbodyElement.remove(tbodyElement.firstChild);
+	//console.log(tbodyElement.firstChild);
+	}
 }
 
 function getData() {

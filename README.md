@@ -52,6 +52,8 @@ ejs is included in npm as a additional module, which has to be installed
 
 
 
+Insert into table link: https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/insertRow
+
 
 *Things to think about*:
 - The same-origin policy (with CORS)
