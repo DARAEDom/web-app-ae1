@@ -24,7 +24,7 @@ After week 8 session:
 
 ** Database Set up **:
 - Add new database by using command `CREATE DATABASE <db_name>`
-- Add data to the database by typing in the following `mysql -u <username> -p <db_name> < <sql filename>` use -p argument if you have password set up on your account
+- Add data to the database by typing in the following `mysql -u <username> -p <db_name> <  <sql filename>` use -p argument if you have password set up on your account
 
 - This database seems to be a little bit broken, if we copy paste the entire contents of it, mariadb does not print any erorr, I will have to analyse the code itself by comparing it to previous sessions, in this cases it's ht_users.sql
 - I decided to try spliting the database into 3 by CREATE TABLE, I have realised I made a mistake whenever I import poi_users poi_reviews table is being dropped, I noticed the code issue imidately, afterwards I was able to have 3 tables in one database, Database name webAE, in the code I had to change the code to `use webAE;` 
