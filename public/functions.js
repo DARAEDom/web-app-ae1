@@ -53,21 +53,6 @@ function searchButton() {
 		dbSearch(query);
 }
 
-// Cannot read property 'appendchild' of null has occured
-async function dbSearch2(query) {
-		try {
-			const response = await fetch(`/poi/find/${query}`);
-			const contents = await response.json();
-			Object.values(contents).forEach(value => {
-				console.log(value);
-				let tag = document.createElement('tr');
-				//tag.innerHTML = '<td>' + value[0] + '</td>' + '<td>' + value[1] + '</td>' + '<td>' + value[2] + '</td>' +'<td>' + value[3] + '</td>' +'<td>' + value[4] + '</td>' +'<td>' + value[5] + '</td>' +'<td>' + value[6] + '</td>' +'<td>' + value[7] + '</td>' +'<td>' + value[8] + '</td>' + `<td><button onclick=`recommend(${value.ID})`>Recommend</button></td>`; 
-				document.getElementById("trId").appendChild(tag);
-		});
-		} catch (e) {
-			console.log(`Error ${e} has occured`);
-		}}
-
 async function dbSearch(query) {
 		try {
 			const response = await fetch(`/poi/find/${query}`)
@@ -78,14 +63,7 @@ async function dbSearch(query) {
 					console.log(arrayValue);
 					addRows(arrayValue);
 				})});
-			checkRows();
-			//const response = await fetch(`/poi/find/${query}`);
-			//const jsonContents = await response.json();
-			//const contents = Object.values(jsonContents); 
-			//const contents1 = JSON.parse(JSON.stringify(jsonContents));
-			//console.log(contents);	
-			//console.log(contents1);
-
+//			checkRows();
 
 		} catch (e) {
 			console.log(`Error ${e} has occured`);
@@ -123,10 +101,6 @@ function addRows(contents) {
 	newCell4.appendChild(newText4);
 	newCell5.appendChild(newText5);
 	newCell6.appendChild(newText6);
-	//for(i = 0; i < contents.length; i++) {
-	//	let newText = document.createTextNode(contents[i]);
-	//	newCell.appendChild(newText);
-	//}
 }
 
 function checkRows() {
@@ -134,10 +108,7 @@ function checkRows() {
 //	tbodyElement.childNodes.forEach ( childNode => {
 //			tbodyElement.removeChild('tr');
 //});
-	while(tbodyElement.firstChild) {
-//		tbodyElement.remove(tbodyElement.firstChild);
-	//console.log(tbodyElement.firstChild);
-	}
+//	tbodyElement.remove(tbodyElement.firstChild);
 }
 
 function getData() {
