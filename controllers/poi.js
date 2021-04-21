@@ -1,6 +1,5 @@
 const bodyParser = require('body-parser');
 const conn = require('../routes/mysqlconn');
-// require router 
 
 exports.recent = async(req, res) => {
 		try {

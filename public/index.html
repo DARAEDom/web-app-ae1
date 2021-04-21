@@ -3,8 +3,12 @@
 <head>
         <meta charset="UTF-8">
         <title>Assessment </title>
-		<link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'/>
-		<script type='text/javascript' src='https://unpkg.com/leaflet@1.7.1/dist/leaflet.js'></script>
+		 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+		  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
 		<script type='text/javascript' src='functions.js'></script>
 </head>
 <body>
@@ -12,6 +16,7 @@
 		<label for="regionInput"> Region </label>
 		<input type="text" id="inputQuery"> <br>
 		<input type="submit" onclick="searchButton()" id="sendButton" value="Submit"> <br><br>
+
 
 			<table>
        			<thead>
@@ -28,11 +33,9 @@
         		</thead>
 			<tbody id="tbodyResults">
 		</tbody>
+	
 
 		<div>
-			<div id="map1" onload="map()" style="width:600px; height:600px"> </div>
-		</div>
-
 			<label for="nameIn"> Name</label>
 			<input type="text" id="nameIn"> <br>
 			<label for="regionIn"> Region </label>
@@ -49,5 +52,10 @@
 			<input type="text" id="desIn"> <br>
 			<button onclick="getData()" id="sendIn">Button Add</button>
 		</div>
+
+
+		<div id="mapid" style="width:600px; height:600px"> </div>
+		<script type="text/javascript" src="map.js"> </script>
+
 </body>
 </html>
