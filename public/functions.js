@@ -92,7 +92,14 @@ function addRows(contents) {
 	let newText4 = document.createTextNode(contents[5]);
 	let newText5 = document.createTextNode(contents[6]);
 	let newText6 = document.createTextNode(contents[7]);
-	// create button
+	let newText7 = document.createTextNode(contents[8]);
+	let newButton8 = document.createElement("BUTTON");
+	
+	newButton8.innerHTML = "Recommend";
+	newButton8.onclick = function(){
+		saveRecommendation(this.id);
+	}
+	newButton8.setAttribute("id", contents[0]);
 
 	newCell0.appendChild(newText0);
 	newCell1.appendChild(newText1);
@@ -101,6 +108,9 @@ function addRows(contents) {
 	newCell4.appendChild(newText4);
 	newCell5.appendChild(newText5);
 	newCell6.appendChild(newText6);
+	newCell7.appendChild(newText7);
+	newCell8.appendChild(newButton8);
+
 }
 
 function checkRows() {
@@ -132,10 +142,6 @@ async function saveData(contents) {
 				'Content-Type': 'application/json'},
 			body: JSON.stringify(contents)
 	});
-}
-
-function getRecommend() {
-	// find ID
 }
 
 async function saveRecommendation(id) {

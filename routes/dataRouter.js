@@ -10,18 +10,6 @@ const poiControl = require('../controllers/poi');
 
 dataRouter.use(cors());
 
-// works
-//dataRouter.get('/poi/find/:region', (req, res) => {
-//		conn.query(`SELECT * FROM pointsofinterest WHERE region=?`, [req.params.region], 
-//		(error, results, fields) => {
-//				if (error) {
-//						res.status(500).json({error:error});
-//				} else {
-//						res.json(results);
-//				}
-//		});
-//});
-
 dataRouter.get('/poi/find/:region', poiControl.search);
 
 dataRouter.post('/poi/:id/recommend', poiControl.recommend);
