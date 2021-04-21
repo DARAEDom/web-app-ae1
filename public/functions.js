@@ -1,10 +1,10 @@
 function map() {
 	initMap();	
-	addModulesToMap();
+//	addModulesToMap();
 }
 
 function initMap() {
-	const map = L.map ("map1");
+	const map = L.map ("mapid");
 
 	const attrib="Map data copyright OpenStreetMap contributors, Open Database Licence";
 
@@ -110,7 +110,6 @@ function addRows(contents) {
 	newCell6.appendChild(newText6);
 	newCell7.appendChild(newText7);
 	newCell8.appendChild(newButton8);
-
 }
 
 function checkRows() {
