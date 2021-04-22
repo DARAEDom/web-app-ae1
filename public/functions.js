@@ -1,7 +1,21 @@
-function map() {
-	initMap();	
-//	addModulesToMap();
-}
+function map(location) {
+	const map = L.map ("mapid");
+// [50.9, -1.4]
+	const attrib="Map data copyright OpenStreetMap contributors, Open Database Licence";
+
+	L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: attrib } ).addTo(map);
+
+	const pos = [location[0], location[1]];
+	map.setView(pos, 14);
+
+	L.marker(pos).addTo(map);
+	map.on("click", e => {
+		L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+		console.log(`You clicked at:${e.latlng.lat} ${e.latlng.lng}`);
+
+	module = initMap();	
+	addModulesToMap(module);
+});
 
 function initMap() {
 	const map = L.map ("mapid");
@@ -18,12 +32,15 @@ function initMap() {
 		L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
 		console.log(`You clicked at:${e.latlng.lat} ${e.latlng.lng}`);
 	});
+
+	return [map, pos];
 }
 
-function addModulesToMap() {
+function addModulesToMap(module) {
+
+
 	const solent = L.circle([50.9079, -1.4015], { radius:100, fillColor: 'blue',
                                 color: 'red', opacity: 0.5 }).addTo(map);
-
 	// Saints stadium (football ground)
 	const saints = L.polygon ( [
         [50.9063 , -1.3914 ] ,
@@ -49,12 +66,15 @@ function addModulesToMap() {
 }
 
 function searchButton() {
+	try {
 		const query = document.getElementById("inputQuery").value;
 		dbSearch(query);
+	} catch (e) {
+		console.log(`Error ${e} has occured!`);
+	}
 }
 
 async function dbSearch(query) {
-		try {
 			const response = await fetch(`/poi/find/${query}`)
 			.then(response => {return response.json();})
 			.then(contents => {
@@ -64,10 +84,6 @@ async function dbSearch(query) {
 					addRows(arrayValue);
 				})});
 //			checkRows();
-
-		} catch (e) {
-			console.log(`Error ${e} has occured`);
-		}
 }
 
 function addRows(contents) {
@@ -150,4 +166,5 @@ async function saveRecommendation(id) {
 			headers: {
 				'Content-Type': 'application/json'}
 	})
+}
 }
