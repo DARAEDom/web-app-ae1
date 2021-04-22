@@ -14,79 +14,100 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
 
+		<link rel="stylesheet" href="style.css">
+
 		<script type='text/javascript' src='functions.js'></script>
 
 </head>
 <body onload="map()">
-	<nav>
-	        <ul>
-	                <li>
-						<div class="row g-3 align-items-center">
-  							<div class="col-auto">
-    							<label for="inputPassword6" class="col-form-label">Login</label>
-  							</div>
-  							<div class="col-auto">
-    							<input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
-  							</div>
-						</div>
-					</li>
-	                <li>
-						<div class="row g-3 align-items-center">
-  							<div class="col-auto">
-    							<label for="inputPassword6" class="col-form-label">Password</label>
-  							</div>
-  							<div class="col-auto">
-    							<input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
-  							</div>
-						</div>
-					</li>
-	        </ul>
+	<nav class="navbar navbar-dark bg-dark">
+		<div class="container-fluid">
+    		<a class="navbar-brand">AE Project</a>
+    			<form class="d-flex">
+      				<input class="form-control me-2" type="text" placeholder="Name" aria-label="Name">
+      				<input class="form-control me-2" type="password" placeholder="Password" aria-label="Password">
+      				<button class="btn btn-outline-success" type="submit">Login</button>
+    			</form>
+  		</div>
 	</nav>
+	<div class="container-sm">
 		<h4> Search for Point of interest</h4>
 		<label for="regionInput"> Region </label>
 		<input type="text" id="inputQuery"> <br>
 		<input type="submit" onclick="searchButton()" id="sendButton" value="Submit"> <br><br>
+	</div>
+	<div class="container-lg">
 
-
-		<div>	
-			<div>
-				<table>
-       				<thead>
-            			<tr>
-	                		<th scope="col">Name</th>
-	                    	<th scope="col">Type</th>
-	                    	<th scope="col">Country</th>
-	                    	<th scope="col">Region</th>
-	                    	<th scope="col">Longitude</th>
-	                    	<th scope="col">Latitude</th>
-							<th scope="col">Description</th>
-	                    	<th scope="col">Recomendations</th>
-               				</tr>
-        				</thead>
-					<tbody id="tbodyResults">
-
-					</tbody>
-			</div>
-			<div id="mapid" style="width:600px; height:600px"> </div>
+		<div class="input-group mb-3">
+  			<span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+  			<input type="text" id="nameIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			<div class="invalid-feedback">Example invalid feedback text</div>
 		</div>
 
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-default">Region</span>
+			<input type="text" id="regionIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			<div class="invalid-feedback">Example invalid feedback text</div>
+		</div>
+
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-default">Type</span>
+			<input type="text" id="typeIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			<div class="invalid-feedback">Example invalid feedback text</div>
+		</div>
+
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-default">Country</span>
+			<input type="text" id="countryIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			<div class="invalid-feedback">Example invalid feedback text</div>
+		</div>
+
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-default">Longitude</span>
+			<input type="number" id="lonIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			<div class="invalid-feedback">Example invalid feedback text</div>
+		</div>
+
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-default">Latitude</span>
+			<input type="number" id="latIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			<div class="invalid-feedback">Example invalid feedback text</div>
+		</div>
+
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+			<input type="text" id="desIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			<div class="invalid-feedback">Example invalid feedback text</div>
+		</div>
+
+	</div>
+
+	<div class="container-sm">
 		<div>
-			<label for="nameIn"> Name</label>
-			<input type="text" id="nameIn"> <br>
-			<label for="regionIn"> Region </label>
-			<input type="text" id="regionIn"> <br>
-			<label for="typeIn"> Type</label>
-			<input type="text" id="typeIn"> <br>
-			<label for="countryIn"> Country</label>
-			<input type="text" id="countryIn"> <br>
-			<label for="lonIn"> Longitude</label>
-			<input type="text" id="lonIn"> <br>
-			<label for="latIn"> Latitude</label>
-			<input type="text" id="latIn"> <br>
-			<label for="desIn"> Description</label>
-			<input type="text" id="desIn"> <br>
-			<button onclick="getData()" id="sendIn">Button Add</button>
+			<table>
+       			<thead>
+        			<tr>
+	            		<th scope="col">Name</th>
+	                	<th scope="col">Type</th>
+	                	<th scope="col">Country</th>
+	                	<th scope="col">Region</th>
+	                	<th scope="col">Longitude</th>
+	                	<th scope="col">Latitude</th>
+						<th scope="col">Description</th>
+	                	<th scope="col">Recomendations</th>
+       				</tr>
+       			</thead>
+				<tbody id="tbodyResults">
+
+				</tbody>
+			</table>
 		</div>
+		<div>
+			<div id="mapid" style="width:600; height:600px"> </div>
+		</div>
+	</div>
+
+
 
 
 
