@@ -9,37 +9,19 @@ function map(location) {
 	map.setView(pos, 14);
 
 	L.marker(pos).addTo(map);
-	map.on("click", e => {
-		L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
-		console.log(`You clicked at:${e.latlng.lat} ${e.latlng.lng}`);
+	map.on("click", mark => {
+		L.marker([mark.latlng.lat, mark.latlng.lng]).addTo(map);
+		console.log(`You clicked at:${mark.latlng.lat} ${mark.latlng.lng}`);
 
-	module = initMap();	
-	addModulesToMap(module);
+	addModulesToMap(map);
 });
 
-function initMap() {
-	const map = L.map ("mapid");
+function addModulesToMap(map, location, details) {
 
-	const attrib="Map data copyright OpenStreetMap contributors, Open Database Licence";
-
-	L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: attrib } ).addTo(map);
-
-	const pos = [50.9, -1.4];            
-	map.setView(pos, 14);
-
-	L.marker(pos).addTo(map);
-	map.on("click", e => {
-		L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
-		console.log(`You clicked at:${e.latlng.lat} ${e.latlng.lng}`);
-	});
-
-	return [map, pos];
-}
-
-function addModulesToMap(module) {
-
-
-	const solent = L.circle([50.9079, -1.4015], { radius:100, fillColor: 'blue',
+	const marker = L.marker([location[0], location[1]]).addTo(map);
+	marker.bindPopup(`<b>${details[0]}</b><br>${details[1]}`);
+	
+/*	const solent = L.circle([50.9079, -1.4015], { radius:100, fillColor: 'blue',
                                 color: 'red', opacity: 0.5 }).addTo(map);
 	// Saints stadium (football ground)
 	const saints = L.polygon ( [
@@ -58,11 +40,7 @@ function addModulesToMap(module) {
         [50.9081, -1.4134] 
         ]).addTo(map);
 	const marker = L.marker(pos).addTo(map);
-
-	solent.bindPopup("Solent University");
-	saints.bindPopup("Saints stadium");
-	routeToStation.bindPopup("Route to station");
-	marker.bindPopup("My Location");
+*/
 }
 
 function searchButton() {
@@ -75,11 +53,13 @@ function searchButton() {
 }
 
 async function dbSearch(query) {
+		let i = 0;
 			const response = await fetch(`/poi/find/${query}`)
 			.then(response => {return response.json();})
 			.then(contents => {
 				Object.values(contents).forEach(value => {
 					const arrayValue = Object.values(value)
+					i++;
 					console.log(arrayValue);
 					addRows(arrayValue);
 				})});
