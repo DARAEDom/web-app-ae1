@@ -1,0 +1,15 @@
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	display: inline;
+}
+table {
+	width: 100%;
+}
+th {
+	padding-right: 12%;
+}
