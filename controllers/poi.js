@@ -68,3 +68,11 @@ exports.add = async(req, res) => {
 				console.log(`Error ${e} has occured`);
 		}
 }
+
+function isEmptyJson(args) {
+		args.forEach(element => {
+			console.log(element)
+		let elem = Object.values(element);
+		console.log(Object.values(elem));
+		});
+}

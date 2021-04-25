@@ -53,13 +53,11 @@ function searchButton() {
 }
 
 async function dbSearch(query) {
-		let i = 0;
 			const response = await fetch(`/poi/find/${query}`)
 			.then(response => {return response.json();})
 			.then(contents => {
 				Object.values(contents).forEach(value => {
 					const arrayValue = Object.values(value)
-					i++;
 					console.log(arrayValue);
 					addRows(arrayValue);
 				})});
