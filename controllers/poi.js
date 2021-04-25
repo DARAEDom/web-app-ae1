@@ -56,6 +56,7 @@ exports.search = async(req, res) => {
 exports.add = async(req, res) => {
 		try {
 				console.log(req.body);
+				if (isEmptyJson) {
 				isEmptyJson(req.body);
 			conn.query(`INSERT INTO pointsofinterest( name, type, country, region, lon, lat, description) VALUES(?, ?, ?, ?, ?, ?, ?)`, [req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], 
 			(error, results, fields) => {
@@ -64,16 +65,27 @@ exports.add = async(req, res) => {
 				} else {
 					res.json({success:1});
 				}
-		});
+		});} 
+		else {
+			res.status(418).json({error:"Missing data"});
+		}
 		} catch (e) {
 				console.log(`Error ${e} has occured`);
 		}
 }
 
-function isEmptyJson(args) {
-		args.forEach(element => {
-			console.log(element)
-		let elem = Object.values(element);
-		console.log(Object.values(elem));
+function isEmptyJson(str) {
+	try {
+		JSON.parse(str);
+    } catch (err) {
+        return false;
+    }	
+	console.log("check pass");
+	return true;
+		/*Object.values(argument).forEach(element => {
+			if (element == "") {
+				return false;
+			}
 		});
+		return true;*/
 }

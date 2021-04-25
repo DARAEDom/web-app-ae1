@@ -17,6 +17,7 @@
 		<link rel="stylesheet" href="style.css">
 
 		<script type='text/javascript' src='functions.js'></script>
+		<script type='text/javascript' src='map.js'></script>
 
 </head>
 <body onload="map([50.9, -1.4])">
@@ -93,12 +94,16 @@
 			<span class="input-group-text" id="inputGroup-sizing-default">Longitude</span>
 			<input type="number" id="lonIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			<div class="invalid-feedback">Example invalid feedback text</div>
+
+			<span class="input-group-text" id="inputGroup-sizing-default">Number</span>
 		</div>
 
 		<div class="input-group mb-3">
 			<span class="input-group-text" id="inputGroup-sizing-default">Latitude</span>
 			<input type="number" id="latIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			<div class="invalid-feedback">Example invalid feedback text</div>
+
+			<span class="input-group-text" id="inputGroup-sizing-default">Number</span>
 		</div>
 
 		<div class="input-group mb-3">
@@ -106,9 +111,8 @@
 			<input type="text" id="desIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			<div class="invalid-feedback">Example invalid feedback text</div>
 
-			<input type="button" onclick="getData()" value="Click"> <br><br>
 		</div>
-
+		<input type="button" onclick="getData()" value="Click"> <br><br>
 	</div>
 
 
