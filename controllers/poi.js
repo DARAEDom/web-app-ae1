@@ -74,18 +74,19 @@ exports.add = async(req, res) => {
 		}
 }
 
-function isEmptyJson(str) {
-	try {
+function isEmptyJson(argument) {
+		Object.values(argument).forEach(element => {
+				console.log(element);
+				console.log(element[1]);
+			}
+		});
+		return true;
+
+	/*try {
 		JSON.parse(str);
     } catch (err) {
         return false;
     }	
 	console.log("check pass");
-	return true;
-		/*Object.values(argument).forEach(element => {
-			if (element == "") {
-				return false;
-			}
-		});
-		return true;*/
+	return true;*/
 }
