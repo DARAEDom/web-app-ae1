@@ -45,7 +45,7 @@ exports.search = async(req, res) => {
 				if (error) {
 						res.status(500).json({error:error});
 				} else {
-						console.log(results[0]);
+						console.log(results);
 						res.json(results);
 				}
 		});
