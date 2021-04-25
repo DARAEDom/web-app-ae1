@@ -76,12 +76,17 @@ exports.add = async(req, res) => {
 
 function isEmptyJson(argument) {
 		Object.values(argument).forEach(element => {
-				console.log(element);
-				console.log(element[1]);
-			}
-		});
-		return true;
+				if(element === typeof('string') || element instanceof String) {
+					console.log("String");
+				} else if (element instanceof Number) {
+					console.log("Number");
+				} else {
+					console.log("False");
+					return false;
+				}
+			});
 
+		return true;
 	/*try {
 		JSON.parse(str);
     } catch (err) {
