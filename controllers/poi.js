@@ -56,6 +56,7 @@ exports.search = async(req, res) => {
 exports.add = async(req, res) => {
 		try {
 				console.log(req.body);
+				isEmptyJson(req.body);
 			conn.query(`INSERT INTO pointsofinterest( name, type, country, region, lon, lat, description) VALUES(?, ?, ?, ?, ?, ?, ?)`, [req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], 
 			(error, results, fields) => {
 				if (error) {
