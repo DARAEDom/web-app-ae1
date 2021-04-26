@@ -119,3 +119,16 @@ async function ajaxLogin(details) {
 		body: JSON.stringify(details)
 	});	
 }
+
+function checkLogin() {
+	console.log("check login");
+	if (ajaxGetLogin) {
+		console.log("Logged in ");
+	} else {
+		console.log("Not Logged");
+	}
+}
+async function ajaxGetLogin() {
+	const response = await fetch('/login');
+	console.log(response);
+}
