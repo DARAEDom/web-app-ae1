@@ -1,8 +1,6 @@
 function map() {
 	const map = L.map ("mapid");
-// [50.9, -1.4]
 	const attrib="Map data copyright OpenStreetMap contributors, Open Database Licence";
-
 	L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: attrib } ).addTo(map);
 
 	const location = document.body.getElementsByTagName("td");
@@ -15,6 +13,9 @@ function map() {
 		L.marker([mark.latlng.lat, mark.latlng.lng]).addTo(map);
 		console.log(`You clicked at:${mark.latlng.lat} ${mark.latlng.lng}`);
 
+		location.forEach(record => {
+			console.log(record, record[1]);
+		});
 //		addModulesToMap(map, )
 });
 }
