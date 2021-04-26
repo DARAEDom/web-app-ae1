@@ -1,12 +1,13 @@
-function map(location) {
+function map() {
 	const map = L.map ("mapid");
 // [50.9, -1.4]
-	console.log(map);
 	const attrib="Map data copyright OpenStreetMap contributors, Open Database Licence";
 
 	L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: attrib } ).addTo(map);
 
-	const pos = [location[0], location[1]];
+	const location = document.body.getElementsByTagName("td");
+	
+	const pos = [ parseInt(location[5].childNodes[0].nodeValue), parseInt(location[4].childNodes[0].nodeValue)];
 	map.setView(pos, 14);
 
 	L.marker(pos).addTo(map);
@@ -14,7 +15,7 @@ function map(location) {
 		L.marker([mark.latlng.lat, mark.latlng.lng]).addTo(map);
 		console.log(`You clicked at:${mark.latlng.lat} ${mark.latlng.lng}`);
 
-		addModulesToMap(map, )
+//		addModulesToMap(map, )
 });
 }
 
@@ -67,14 +68,30 @@ async function dbSearch(query) {
 					const arrayValue = Object.values(value)
 					console.log(arrayValue);
 					addRows(arrayValue);
-					addModulesToMap([arrayValue[5], arrayValue[6]], [arrayValue[7], arrayValue[2]]);
 					console.log(arrayValue[5], arrayValue[6], arrayValue[7], arrayValue[2]);
 				})
-				mapLocation = [contents[6], contents[7]];
+				map();
 //				map.map(mapLocation);
 			});
 //			checkRows();
 }
+
+// async function dbSearch(query) {
+// 			const response = await fetch(`/poi/find/${query}`)
+// 			.then(response => {return response.json();})
+// 			.then(contents => {
+// 				Object.values(contents).forEach(value => {
+// 					const arrayValue = Object.values(value)
+// 					console.log(arrayValue);
+// 					addRows(arrayValue);
+// 					addModulesToMap([arrayValue[5], arrayValue[6]], [arrayValue[7], arrayValue[2]]);
+// 					console.log(arrayValue[5], arrayValue[6], arrayValue[7], arrayValue[2]);
+// 				})
+// 				mapLocation = [contents[6], contents[7]];
+// //				map.map(mapLocation);
+// 			});
+// //			checkRows();
+// }
 
 function addRows(contents) {
 	let tableId = document.getElementById('tbodyResults');
