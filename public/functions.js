@@ -8,15 +8,21 @@ function map() {
 	const pos = [ parseInt(location[5].childNodes[0].nodeValue), parseInt(location[4].childNodes[0].nodeValue)];
 	map.setView(pos, 14);
 
+	let array = Array.from(location);
+		console.log(array);
+		console.log(array[0]);
+		console.log(array[1]);
+		console.log(array[8]);
+/*		for(i=0; i < location.length; i++) {
+			console.log(location[1].childNodes[i].nodeValue);
+		} */
+//		addModulesToMap(map, )
+
 	L.marker(pos).addTo(map);
 	map.on("click", mark => {
 		L.marker([mark.latlng.lat, mark.latlng.lng]).addTo(map);
 		console.log(`You clicked at:${mark.latlng.lat} ${mark.latlng.lng}`);
 
-		location.forEach(record => {
-			console.log(record, record[1]);
-		});
-//		addModulesToMap(map, )
 });
 }
 
@@ -67,9 +73,9 @@ async function dbSearch(query) {
 			.then(contents => {
 				Object.values(contents).forEach(value => {
 					const arrayValue = Object.values(value)
-					console.log(arrayValue);
+					//console.log(arrayValue);
 					addRows(arrayValue);
-					console.log(arrayValue[5], arrayValue[6], arrayValue[7], arrayValue[2]);
+					//console.log(arrayValue[5], arrayValue[6], arrayValue[7], arrayValue[2]);
 				})
 				map();
 //				map.map(mapLocation);
