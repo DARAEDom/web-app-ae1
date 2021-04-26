@@ -12,11 +12,10 @@ function map(location) {
 	map.on("click", mark => {
 		L.marker([mark.latlng.lat, mark.latlng.lng]).addTo(map);
 		console.log(`You clicked at:${mark.latlng.lat} ${mark.latlng.lng}`);
-
-	addModulesToMap(map);
 });
+}
 
-function addModulesToMap(map, location, details) {
+function addModulesToMap(location, details) {
 
 	const marker = L.marker([location[0], location[1]]).addTo(map);
 	marker.bindPopup(`<b>${details[0]}</b><br>${details[1]}`);
@@ -41,4 +40,4 @@ function addModulesToMap(map, location, details) {
         ]).addTo(map);
 	const marker = L.marker(pos).addTo(map);
 */
-}}
+}
