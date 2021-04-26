@@ -104,9 +104,10 @@ async function saveRecommendation(id) {
 
 function loginDetails() {
 	details = {
-			username: document.getElementById("loginId").value;
-			password: document.getElementById("passwordId").value;
+			username: document.getElementById("loginId").value,
+			password: document.getElementById("passwordId").value
 	}
+		console.log(details);
 	ajaxLogin(details);
 }
 
@@ -114,7 +115,7 @@ async function ajaxLogin(details) {
 	const response = await fetch(`/login`, {
 		method: 'POST',
 		headers: {
-			'Content-Type': 'application/json'}
-		body: JSON.stringify(details);
+			'Content-Type': 'application/json'},
+		body: JSON.stringify(details)
 	});	
 }

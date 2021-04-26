@@ -7,17 +7,18 @@ const MySQLStore = require('express-mysql-session')(expressSession);
 const sessionStore = new MySQLStore({ } , conn.promise());
 
 userRoutes.post('/login', (req, res) => {
+	console.log(`${req.body.username} Username, ${req.body.password} Password`);
 	conn.query(`SELECT * FROM poi_users WHERE username = ? AND password = ?`, [req.body.username, req.body.password], 
 	(error, results, fields) => {
 		if(results.length > 0) {
-			req.session.username = req.body.username;
+			req.body.username = req.session.username;
 			res.json({success: 1});
 		}
 /*		if(req.body.username == 'username' && req.body.password == 'password') {
 			req.session.username = req.body.username;
 			res.json({success: 1});
 */
-		} else {
+		else {
 			res.status(401).json({error: "Incorrect Login!"});
 		}
 	});
