@@ -75,7 +75,7 @@ function purgeTable() {
 function purgeMap() {
 	const mapElement = document.getElementById(mapDiv);
 	console.log(mapElement);
-	console.log(document.getElementById('mapid').className==false);
+	console.log(mapElement.childNodes);
 	if (!document.getElementById('mapid').className == false) {
 		mapElement.removeChild(mapElement.firstChild);
 	}
