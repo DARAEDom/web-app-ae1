@@ -54,7 +54,9 @@ exports.search = async(req, res) => {
 
 exports.add = async(req, res) => {
 		try {
-				if (isEmptyJson(req.body)) {
+				// if (simpleCheck(req)) {
+				// if (isEmptyJson(req.body)) {
+					isEmptyJson(req.body);
 					conn.query(`INSERT INTO pointsofinterest( name, type, country, region, lon, lat, description) VALUES(?, ?, ?, ?, ?, ?, ?)`, [req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], 
 					(error, results, fields) => {
 					if (error) {
@@ -62,17 +64,26 @@ exports.add = async(req, res) => {
 					} else {
 						res.json({success:1});
 					}
-			});} 
-			else {
-				res.status(418).json({error:"Missing data"});
-			}
+			}); 
+			// } else {
+				// res.status(418).json({error:"Missing data"});
+			// }
 		} catch (e) {
 				console.log(`Error ${e} has occured`);
 		}
 }
 
-function isEmptyJson(argument) {
+function simpleCheck(req) {
+	Object.values(req).forEach(value => {
+		console.log(value);
+		return true;
+	});
+}
+
+function isEmptyJson(arguments) {
+	console.log(arguments);
 		Object.values(argument).forEach(element => {
+			console.log(element);
 				if(element === typeof('string') || element instanceof String) {
 					console.log("String");
 				} else if (element instanceof Number) {

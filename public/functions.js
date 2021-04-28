@@ -9,10 +9,6 @@ function map() {
 	map.setView(pos, 14);
 
 	const array = Array.from(location);
-		console.log(array[4].childNodes[0].nodeValue);
-		console.log(array[5].childNodes[0].nodeValue);
-		console.log(array[6], array[0]);
-		console.log(location.length/9, location.length);
 		for(i=0; i < location.length/9; i++) {
 			addModulesToMap(map, [parseFloat(array[5+i*9].childNodes[0].nodeValue), parseFloat(array[4+i*9].childNodes[0].nodeValue)], [array[0+i*9].childNodes[0].nodeValue, array[6+i*9].childNodes[0].nodeValue]);
 		} 
@@ -25,7 +21,6 @@ function map() {
 }
 
 function fillForm(lon, lat) {
-	console.log(lon, lat);
 	document.getElementById('lonIn').value = lon;
 	document.getElementById('latIn').value = lat;
 }
