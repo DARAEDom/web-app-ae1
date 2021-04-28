@@ -31,36 +31,17 @@ function addModulesToMap(map, location, details) {
 	marker.bindPopup(`<b>${details[0]}</b><br>${details[1]}`);
 }
 
-// function map(location) {
-	// const map = L.map ("mapid");
-//[50.9, -1.4]
-	// console.log(map);
-	// const attrib="Map data copyright OpenStreetMap contributors, Open Database Licence";
-// 
-	// L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: attrib } ).addTo(map);
-// 
-	// const pos = [location[0], location[1]];
-	// map.setView(pos, 14);
-// 
-	// L.marker(pos).addTo(map);
-	// map.on("click", mark => {
-		// L.marker([mark.latlng.lat, mark.latlng.lng]).addTo(map);
-		// console.log(`You clicked at:${mark.latlng.lat} ${mark.latlng.lng}`);
-// 
-		// addModulesToMap(map, )
-// });
-// }
-// 
-// function addModulesToMap(map, location, details) {
-	// console.log(location[0], location[1], details[0], details[1] );
-	// const marker = L.marker([location[0], location[1]]).addTo(map);
-	// marker.bindPopup(`<b>${details[0]}</b><br>${details[1]}`);
-// }
-
 function searchButton() {
 	try {
 		const query = document.getElementById("inputQuery").value;
+		const test0 = document.getElementById('tbodyResults');
+		console.log(test0);
+		while (test0.firstChild) {
+			test0.removeChild(test0.lastChild);
+		}
+		console.log(test0);
 		dbSearch(query); 
+		// test0.removeChild();
 	} catch (e) {
 		console.log(`Error ${e} has occured!`);
 	}
@@ -72,32 +53,11 @@ async function dbSearch(query) {
 			.then(contents => {
 				Object.values(contents).forEach(value => {
 					const arrayValue = Object.values(value)
-					//console.log(arrayValue);
 					addRows(arrayValue);
-					//console.log(arrayValue[5], arrayValue[6], arrayValue[7], arrayValue[2]);
 				})
 				map();
-//				map.map(mapLocation);
 			});
-//			checkRows();
 }
-
-// async function dbSearch(query) {
-// 			const response = await fetch(`/poi/find/${query}`)
-// 			.then(response => {return response.json();})
-// 			.then(contents => {
-// 				Object.values(contents).forEach(value => {
-// 					const arrayValue = Object.values(value)
-// 					console.log(arrayValue);
-// 					addRows(arrayValue);
-// 					addModulesToMap([arrayValue[5], arrayValue[6]], [arrayValue[7], arrayValue[2]]);
-// 					console.log(arrayValue[5], arrayValue[6], arrayValue[7], arrayValue[2]);
-// 				})
-// 				mapLocation = [contents[6], contents[7]];
-// //				map.map(mapLocation);
-// 			});
-// //			checkRows();
-// }
 
 function addRows(contents) {
 	let tableId = document.getElementById('tbodyResults');
