@@ -62,10 +62,10 @@ exports.add = async(req, res) => {
 					} else {
 						res.json({success:1});
 					}
-		});} 
-		else {
-			res.status(418).json({error:"Missing data"});
-		}
+			});} 
+			else {
+				res.status(418).json({error:"Missing data"});
+			}
 		} catch (e) {
 				console.log(`Error ${e} has occured`);
 		}

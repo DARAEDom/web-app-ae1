@@ -21,8 +21,6 @@ function map() {
 	map.on("click", mark => {
 		L.marker([mark.latlng.lat, mark.latlng.lng]).addTo(map);
 		fillForm(mark.latlng.lng, mark.latlng.lat);
-		console.log(`You clicked at:${mark.latlng.lat} ${mark.latlng.lng}`);
-
 });
 }
 
