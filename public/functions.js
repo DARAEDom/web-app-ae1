@@ -34,14 +34,9 @@ function addModulesToMap(map, location, details) {
 function searchButton() {
 	try {
 		const query = document.getElementById("inputQuery").value;
-		const test0 = document.getElementById('tbodyResults');
-		console.log(test0);
-		while (test0.firstChild) {
-			test0.removeChild(test0.lastChild);
-		}
-		console.log(test0);
+		purgeTable();
+		purgeMap();
 		dbSearch(query); 
-		// test0.removeChild();
 	} catch (e) {
 		console.log(`Error ${e} has occured!`);
 	}
@@ -57,6 +52,20 @@ async function dbSearch(query) {
 				})
 				map();
 			});
+}
+
+function purgeTable() {
+	const table = document.getElementById('tbodyResults');
+	while (table.firstChild) {
+		table.removeChild(table.lastChild);
+	}
+}
+
+function purgeMap() {
+	let map= document.getElementById(mapDiv);
+	if (map) {
+		map.removeChild(map.firstChild);
+	}
 }
 
 function addRows(contents) {
