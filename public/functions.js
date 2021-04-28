@@ -20,9 +20,16 @@ function map() {
 	L.marker(pos).addTo(map);
 	map.on("click", mark => {
 		L.marker([mark.latlng.lat, mark.latlng.lng]).addTo(map);
+		fillForm(mark.latlng.lng, mark.latlng.lat);
 		console.log(`You clicked at:${mark.latlng.lat} ${mark.latlng.lng}`);
 
 });
+}
+
+function fillForm(lon, lat) {
+	console.log(lon, lat);
+	document.getElementById('longitudeHtml').value = lon;
+	document.getElementById('latitudeHtml').value = lat;
 }
 
 function addModulesToMap(map, location, details) {
@@ -73,11 +80,17 @@ function purgeTable() {
 }
 
 function purgeMap() {
-	const mapElement = document.getElementById(mapDiv);
+	let mapElement = document.getElementById('mapDiv');
+	let mapChildElement = document.getElementById('mapid');
 	console.log(mapElement);
-	console.log(mapElement.childNodes);
 	if (!document.getElementById('mapid').className == false) {
-		mapElement.removeChild(mapElement.firstChild);
+		mapChildElement.remove();
+
+		let newDiv = document.createElement("div");
+		newDiv.setAttribute("id", "mapid");
+		newDiv.setAttribute("style", "height:600px")
+
+		mapElement.appendChild(newDiv);
 	}
 }
 
@@ -182,15 +195,27 @@ async function ajaxLogin(details) {
 	});	
 }
 
-function checkLogin() {
+async function checkLogin() {
 	console.log("check login");
-	if (ajaxGetLogin) {
-		console.log("Logged in ");
-	} else {
-		console.log("Not Logged");
-	}
+	const response = await fetch(`/login`);
+	const answer = response.json();
+	console.log("Answer", answer);
+	console.log("Answer 2", answer);
+	Promise.resolve([1, 2, 3])
+	.then(function(value) {
+		console.log(value);
+	})
+	console.log("Promise", Promise.resolve());
+	// if (ajaxGetLogin) {
+		// console.log("Logged in ");
+	// } else {
+		// console.log("Not Logged");
+	// }
 }
-async function ajaxGetLogin() {
-	const response = await fetch('/login');
-	console.log(response);
+
+async function logout() {
+	const response = await fetch('/logout');
+	const answer = response.json();
+	console.log("Response", response);
+	console.log("Answer", answer);
 }

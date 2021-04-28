@@ -19,8 +19,8 @@
 		<script type='text/javascript' src='functions.js'></script>
 
 </head>
-<body>
-	<nav onload="checkLogin()" class="navbar navbar-dark bg-dark">
+<body onload="checkLogin()">
+	<nav  class="navbar navbar-dark bg-dark">
 		<div class="container-fluid">
     		<a class="navbar-brand">AE Project</a>
     			<form class="d-flex">
@@ -33,7 +33,7 @@
 	<div class="container-sm">
 		<h4> Search for Point of interest</h4>
 		<label for="regionInput"> Region </label>
-		<input type="text" id="inputQuery"> <br>
+		<input type="text" id="inputQuery"> 
 		<input type="submit" onclick="searchButton()" id="sendButton" value="Submit"> <br><br>
 	</div>
 
@@ -58,7 +58,7 @@
 			</table>
 		</div>
 		<div id="mapDiv">
-			<div id="mapid" style="width:600; height:600px"> </div>
+			<div id="mapid" style="height:600px"> </div>
 		</div>
 	</div>
 
@@ -91,7 +91,7 @@
 
 		<div class="input-group mb-3">
 			<span class="input-group-text" id="inputGroup-sizing-default">Longitude</span>
-			<input type="number" id="lonIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			<input id="longitudeHtml" type="number" id="lonIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			<div class="invalid-feedback">Example invalid feedback text</div>
 
 			<span class="input-group-text" id="inputGroup-sizing-default">Number</span>
@@ -99,7 +99,7 @@
 
 		<div class="input-group mb-3">
 			<span class="input-group-text" id="inputGroup-sizing-default">Latitude</span>
-			<input type="number" id="latIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			<input id="latitudeHtml" type="number" id="latIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			<div class="invalid-feedback">Example invalid feedback text</div>
 
 			<span class="input-group-text" id="inputGroup-sizing-default">Number</span>
