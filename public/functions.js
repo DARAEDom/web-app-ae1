@@ -34,24 +34,35 @@ function addModulesToMap(map, location, details) {
 function searchButton() {
 	try {
 		const query = document.getElementById("inputQuery").value;
+		if (query) {
 		purgeTable();
 		purgeMap();
 		dbSearch(query); 
+		} else {
+			console.log("No value");
+		}
+		
 	} catch (e) {
 		console.log(`Error ${e} has occured!`);
 	}
 }
 
 async function dbSearch(query) {
-			const response = await fetch(`/poi/find/${query}`)
-			.then(response => {return response.json();})
-			.then(contents => {
-				Object.values(contents).forEach(value => {
-					const arrayValue = Object.values(value)
-					addRows(arrayValue);
-				})
+		const response = await fetch(`/poi/find/${query}`)
+		.then(response => {return response.json();})
+		.then(contents => {
+			Object.values(contents).forEach(value => {
+				const arrayValue = Object.values(value)
+				addRows(arrayValue);
+			})
+			console.log(contents);
+			if (contents.length != 0) {
+				document.getElementById("table").style.display = "block";
 				map();
-			});
+			} else {
+				console.log("Fail");
+			}
+		});
 }
 
 function purgeTable() {
@@ -62,9 +73,11 @@ function purgeTable() {
 }
 
 function purgeMap() {
-	let map= document.getElementById(mapDiv);
-	if (map) {
-		map.removeChild(map.firstChild);
+	const mapElement = document.getElementById(mapDiv);
+	console.log(mapElement);
+	console.log(document.getElementById('mapid').className==false);
+	if (!document.getElementById('mapid').className == false) {
+		mapElement.removeChild(mapElement.firstChild);
 	}
 }
 
