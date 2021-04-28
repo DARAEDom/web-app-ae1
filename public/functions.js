@@ -8,15 +8,14 @@ function map() {
 	const pos = [ parseInt(location[5].childNodes[0].nodeValue), parseInt(location[4].childNodes[0].nodeValue)];
 	map.setView(pos, 14);
 
-	let array = Array.from(location);
-		console.log(array);
-		console.log(array[0]);
-		console.log(array[1]);
-		console.log(array[8]);
-/*		for(i=0; i < location.length; i++) {
-			console.log(location[1].childNodes[i].nodeValue);
-		} */
-//		addModulesToMap(map, )
+	const array = Array.from(location);
+		console.log(array[4].childNodes[0].nodeValue);
+		console.log(array[5].childNodes[0].nodeValue);
+		console.log(array[6], array[0]);
+		console.log(location.length/9, location.length);
+		for(i=0; i < location.length/9; i++) {
+			addModulesToMap(map, [parseFloat(array[5+i*9].childNodes[0].nodeValue), parseFloat(array[4+i*9].childNodes[0].nodeValue)], [array[0+i*9].childNodes[0].nodeValue, array[6+i*9].childNodes[0].nodeValue]);
+		} 
 
 	L.marker(pos).addTo(map);
 	map.on("click", mark => {
