@@ -28,8 +28,8 @@ function map() {
 
 function fillForm(lon, lat) {
 	console.log(lon, lat);
-	document.getElementById('longitudeHtml').value = lon;
-	document.getElementById('latitudeHtml').value = lat;
+	document.getElementById('lonIn').value = lon;
+	document.getElementById('latIn').value = lat;
 }
 
 function addModulesToMap(map, location, details) {
@@ -136,25 +136,21 @@ function addRows(contents) {
 	newCell8.appendChild(newButton8);
 }
 
-function checkRows() {
-	const tbodyElement = document.getElementById('tbodyResults');
-//	tbodyElement.childNodes.forEach ( childNode => {
-//			tbodyElement.removeChild('tr');
-//});
-//	tbodyElement.remove(tbodyElement.firstChild);
-}
-
 function getData() {
-	const contents = {
-		name: document.getElementById("nameIn").value,
-		region: document.getElementById("regionIn").value,
-		type: document.getElementById("typeIn").value,
-		country: document.getElementById("countryIn").value,
-		lon: document.getElementById("lonIn").value,
-		lat: document.getElementById("latIn").value,
-		description: document.getElementById("desIn").value
+	try {
+		const contents = {
+			name: document.getElementById("nameIn").value,
+			region: document.getElementById("regionIn").value,
+			type: document.getElementById("typeIn").value,
+			country: document.getElementById("countryIn").value,
+			lon: document.getElementById("lonIn").value,
+			lat: document.getElementById("latIn").value,
+			description: document.getElementById("desIn").value
+		}
+		saveData(contents)
+	} catch (e) {
+		console.log(`Error ${e}`);
 	}
-	saveData(contents)
 }
 
 async function saveData(contents) { 
@@ -165,6 +161,7 @@ async function saveData(contents) {
 				'Content-Type': 'application/json'},
 			body: JSON.stringify(contents)
 	});
+	responseCheck(response);
 }
 
 async function saveRecommendation(id) {
@@ -173,7 +170,8 @@ async function saveRecommendation(id) {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'}
-	})
+	});
+	responseCheck(response);
 }
 
 
@@ -182,7 +180,7 @@ function loginDetails() {
 			username: document.getElementById("loginId").value,
 			password: document.getElementById("passwordId").value
 	}
-		console.log(details);
+	console.log(details);
 	ajaxLogin(details);
 }
 
@@ -218,4 +216,10 @@ async function logout() {
 	const answer = response.json();
 	console.log("Response", response);
 	console.log("Answer", answer);
+}
+
+function responseCheck(response) {
+	if (response.status == 401) {
+		console.log("You must be logged in");
+	}
 }

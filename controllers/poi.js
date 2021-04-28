@@ -19,8 +19,6 @@ exports.recent = async(req, res) => {
 		}
 }
 
-// delete, edit ? 
-
 exports.recommend = async(req, res) => {
 		try {
 			conn.query(`UPDATE pointsofinterest SET recommendations=recommendations+1 WHERE id=?`, [req.params.id],
@@ -56,16 +54,14 @@ exports.search = async(req, res) => {
 
 exports.add = async(req, res) => {
 		try {
-				console.log(req.body);
-				if (isEmptyJson) {
-				isEmptyJson(req.body);
-			conn.query(`INSERT INTO pointsofinterest( name, type, country, region, lon, lat, description) VALUES(?, ?, ?, ?, ?, ?, ?)`, [req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], 
-			(error, results, fields) => {
-				if (error) {
-					res.status(500).json({error:error});
-				} else {
-					res.json({success:1});
-				}
+				if (isEmptyJson(req.body)) {
+					conn.query(`INSERT INTO pointsofinterest( name, type, country, region, lon, lat, description) VALUES(?, ?, ?, ?, ?, ?, ?)`, [req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], 
+					(error, results, fields) => {
+					if (error) {
+						res.status(500).json({error:error});
+					} else {
+						res.json({success:1});
+					}
 		});} 
 		else {
 			res.status(418).json({error:"Missing data"});

@@ -18,8 +18,6 @@ dataRouter.post('/poi/add', poiControl.add);
 
 dataRouter.get('/poi/recent', poiControl.recent);
 
-
-// change, currently works for ejs
 dataRouter.get('/poi/home', (req, res) => {
 		conn.query(`SELECT * FROM pointsofinterest ORDER BY ID DESC LIMIT 10`, 
 				(error, results, fields) => {
