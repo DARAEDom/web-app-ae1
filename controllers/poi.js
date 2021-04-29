@@ -54,9 +54,9 @@ exports.search = async(req, res) => {
 
 exports.add = async(req, res) => {
 		try {
-				// if (simpleCheck(req)) {
-				// if (isEmptyJson(req.body)) {
-					isEmptyJson(req.body);
+				if(req.body.name || req.body.type || req.body.country || req.body.region || req.body.lon || req.body.lat || req.body.description) {
+					res.status(402).json({error: "Null value"});
+				} else {
 					conn.query(`INSERT INTO pointsofinterest( name, type, country, region, lon, lat, description) VALUES(?, ?, ?, ?, ?, ?, ?)`, [req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], 
 					(error, results, fields) => {
 					if (error) {
@@ -64,37 +64,34 @@ exports.add = async(req, res) => {
 					} else {
 						res.json({success:1});
 					}
-			}); 
-			// } else {
-				// res.status(418).json({error:"Missing data"});
-			// }
+			});} 
 		} catch (e) {
 				console.log(`Error ${e} has occured`);
 		}
 }
 
-function simpleCheck(req) {
-	Object.values(req).forEach(value => {
-		console.log(value);
-		return true;
-	});
-}
-
-function isEmptyJson(arguments) {
-	console.log(arguments);
-		Object.values(argument).forEach(element => {
-			console.log(element);
-				if(element === typeof('string') || element instanceof String) {
-					console.log("String");
-				} else if (element instanceof Number) {
-					console.log("Number");
-				} else {
-					console.log("False");
-					return false;
-				}
-			});
-
-		return true;
+// function simpleCheck(req) {
+	// Object.values(req).forEach(value => {
+		// console.log(value);
+		// return true;
+	// });
+// }
+// 
+// function isEmptyJson(arguments) {
+	// console.log(arguments);
+		// Object.values(argument).forEach(element => {
+			// console.log(element);
+				// if(element === typeof('string') || element instanceof String) {
+					// console.log("String");
+				// } else if (element instanceof Number) {
+					// console.log("Number");
+				// } else {
+					// console.log("False");
+					// return false;
+				// }
+			// });
+// 
+		// return true;
 	/*try {
 		JSON.parse(str);
     } catch (err) {
@@ -102,4 +99,4 @@ function isEmptyJson(arguments) {
     }	
 	console.log("check pass");
 	return true;*/
-}
+// }

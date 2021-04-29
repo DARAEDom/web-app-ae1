@@ -22,10 +22,12 @@
 	<nav  class="navbar navbar-dark bg-dark">
 		<div class="container-fluid">
     		<a class="navbar-brand">AE Project</a>
-    			<form class="d-flex">
-      				<input id="loginInput" class="form-control me-2" type="text" placeholder="Name" aria-label="Name" id="loginId">
-      				<input id="passwordInput" class="form-control me-2" type="password" placeholder="Password" aria-label="Password" id="passwordId">
+    			<form id="loginForm" class="d-flex">
+      				<input id="loginInput" class="form-control me-2" type="text" placeholder="Name" aria-label="Name">
+					<input id="passwordInput" class="form-control me-2" type="password" placeholder="Password" aria-label="Password">
+					<p style="display: none;"id="welcomeText">Welcome back User</p>  
       				<button id="loginButton" class="btn btn-outline-success" type="submit" onclick="loginDetails()">Login</button>
+					<button style="display: none;" id="logoutButton" class="btn btn-outline-success" type="submit" onclick="logout()">Logout</button>
     			</form>
   		</div>
 	</nav>

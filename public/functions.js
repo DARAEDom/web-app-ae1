@@ -170,8 +170,8 @@ async function saveRecommendation(id) {
 
 function loginDetails() {
 	details = {
-			username: document.getElementById("loginId").value,
-			password: document.getElementById("passwordId").value
+			username: document.getElementById("loginInput").value,
+			password: document.getElementById("passwordInput").value
 	}
 	ajaxLogin(details);
 }
@@ -190,11 +190,22 @@ async function checkLogin() {
 	.then(response => {return response.json()})
 	.then(contents => {
 		if (contents.username) {
+			console.log(contents.username);
 			document.getElementById('loginInput').style.display = "none";
 			document.getElementById('passwordInput').style.display = "none";
 			document.getElementById('loginButton').style.display = "none";
 
+			let loginForm = document.getElementById('loginForm');
 
+			document.getElementById('welcomeText').style.display = "block";
+			document.getElementById('logoutButton').style.display = "block";
+			// let welcomeText = document.createElement('p');
+// 
+			// welcomeText.setAttribute('class', 'form-control me-2');		
+			// welcomeText.setAttribute('type', 'text');
+			// welcomeText.setAttribute('id', 'loginInput');
+// 
+			// loginForm.appendChild(welcomeText);
 		}
 	});
 	// const answer = response.json();
@@ -225,5 +236,7 @@ async function logout() {
 function responseCheck(response) {
 	if (response.status == 401) {
 		console.log("You must be logged in");
+	} else if (response.status == 402) {			
+		console.log("Null value");
 	}
 }
