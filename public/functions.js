@@ -147,14 +147,28 @@ function getData() {
 }
 
 async function saveData(contents) { 
-	console.log(contents);
 	const response = await fetch(`/poi/add`, {
 			method:'POST',
 			headers: {
 				'Content-Type': 'application/json'},
 			body: JSON.stringify(contents)
 	});
-	responseCheck(response);
+
+	const alertHtml = document.getElementById('alert');
+	if(response.status == 401) {
+		console.log("Ajax Post Add - Not logged in");
+		alertHtml.innerHTML = "Log in before Adding new record";
+		alertHtml.style.display = "block";
+	} else if (response.status == 402) {
+		console.log("Ajax Post Add - Null value");
+		alertHtml.innerHTML = "Fill all the forms";
+		alertHtml.style.display = "block";
+	} else if (response.status == 500) {
+		console.log("Ajax Post Add - Error");
+		alertHtml.innerHTML = "Error has occured";
+	} else {
+		alertHtml.style.display = "none";
+	}
 }
 
 async function saveRecommendation(id) {
@@ -164,7 +178,17 @@ async function saveRecommendation(id) {
 			headers: {
 				'Content-Type': 'application/json'}
 	});
-	responseCheck(response);
+
+	const alertHtml = document.getElementById('alert');
+	if(response.status == 401) {
+		console.log("Ajax Recommend Post - Not logged in");
+		alertHtml.value = "Log in before Sending Recommendation";
+	} else if (response.status == 500) {
+		console.log("Ajax Recommend Post - Error");
+		alertHtml.value = "Error has occured";
+	} else {
+		alertHtml.style.display = "none";
+	}
 }
 
 
@@ -231,7 +255,9 @@ async function logout() {
 function responseCheck(response) {
 	if (response.status == 401) {
 		console.log("You must be logged in");
+		return 1;
 	} else if (response.status == 402) {			
 		console.log("Null value");
+		return 2;
 	}
 }
