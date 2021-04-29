@@ -173,7 +173,6 @@ function loginDetails() {
 			username: document.getElementById("loginId").value,
 			password: document.getElementById("passwordId").value
 	}
-	console.log(details);
 	ajaxLogin(details);
 }
 
@@ -187,16 +186,28 @@ async function ajaxLogin(details) {
 }
 
 async function checkLogin() {
-	console.log("check login");
-	const response = await fetch(`/login`);
-	const answer = response.json();
-	console.log("Answer", answer);
-	console.log("Answer 2", answer);
-	Promise.resolve([1, 2, 3])
-	.then(function(value) {
-		console.log(value);
-	})
-	console.log("Promise", Promise.resolve());
+	const response = await fetch(`/login`)
+	.then(response => {return response.json()})
+	.then(contents => {
+		if (contents.username) {
+			document.getElementById('loginInput').style.display = "none";
+			document.getElementById('passwordInput').style.display = "none";
+			document.getElementById('loginButton').style.display = "none";
+
+
+		}
+	});
+	// const answer = response.json();
+	// response.then(contents => {
+
+	// });
+	// console.log("Answer", answer);
+	// console.log("Answer 2", answer);
+	// Promise.resolve([1, 2, 3])
+	// .then(function(value) {
+	// 	console.log(value);
+	// })
+	// console.log("Promise", Promise.resolve());
 	// if (ajaxGetLogin) {
 		// console.log("Logged in ");
 	// } else {
