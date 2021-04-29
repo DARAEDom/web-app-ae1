@@ -195,17 +195,13 @@ async function checkLogin() {
 			document.getElementById('passwordInput').style.display = "none";
 			document.getElementById('loginButton').style.display = "none";
 
-			let loginForm = document.getElementById('loginForm');
+			let loginForm = document.getElementById('loginForm');				
 
-			document.getElementById('welcomeText').style.display = "block";
+			const welcomeText = document.getElementById('welcomeText')
+			welcomeText.style.display = "block";
+			welcomeText.innerHTML = "";
+			welcomeText.innerHTML = `Welcome ${contents.username}`;
 			document.getElementById('logoutButton').style.display = "block";
-			// let welcomeText = document.createElement('p');
-// 
-			// welcomeText.setAttribute('class', 'form-control me-2');		
-			// welcomeText.setAttribute('type', 'text');
-			// welcomeText.setAttribute('id', 'loginInput');
-// 
-			// loginForm.appendChild(welcomeText);
 		}
 	});
 	// const answer = response.json();
@@ -227,10 +223,9 @@ async function checkLogin() {
 }
 
 async function logout() {
+	console.log("async logout");
 	const response = await fetch('/logout');
 	const answer = response.json();
-	console.log("Response", response);
-	console.log("Answer", answer);
 }
 
 function responseCheck(response) {

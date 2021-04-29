@@ -3,6 +3,7 @@ const userRoutes = express.Router();
 const conn = require('./mysqlconn');
 
 const session = require('express-session');
+const { response } = require('express');
 const MySQLStore = require('express-mysql-session')(session);
 const sessionStore = new MySQLStore({ } , conn.promise());
 
@@ -22,7 +23,6 @@ userRoutes.use(session({
 }));
 
 userRoutes.post('/login', (req, res) => {
-	console.log(`${req.body.username} Username, ${req.body.password} Password`);
 	conn.query(`SELECT * FROM poi_users WHERE username = ? AND password = ?`, [req.body.username, req.body.password], 
 	(error, results, fields) => {
 		if(results.length > 0) {
@@ -43,9 +43,12 @@ userRoutes.post('/login', (req, res) => {
 });
 
 
-userRoutes.post('/logout', (req, res ) => {
-	req.session == null;
-	res.json({'success' :1});
+userRoutes.post('/logout', (req, res) => {
+		console.log(req.session);
+		req.session == null;
+		req.session.destroy();
+		console.log(req.session);
+		res.json({'success' :1});
 });
 
 userRoutes.get('/login', (req, res) => {

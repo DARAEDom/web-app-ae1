@@ -43,7 +43,6 @@ exports.search = async(req, res) => {
 				if (error) {
 						res.status(500).json({error:error});
 				} else {
-						console.log(results);
 						res.json(results);
 				}
 		});
@@ -54,8 +53,8 @@ exports.search = async(req, res) => {
 
 exports.add = async(req, res) => {
 		try {
-				if(req.body.name || req.body.type || req.body.country || req.body.region || req.body.lon || req.body.lat || req.body.description) {
-					res.status(402).json({error: "Null value"});
+				if(!req.body.name || !req.body.type || !req.body.country || !req.body.region || !req.body.lon || !req.body.lat || !req.body.description) {
+					res.status(402).json({error: "Add Error - Null value"});
 				} else {
 					conn.query(`INSERT INTO pointsofinterest( name, type, country, region, lon, lat, description) VALUES(?, ?, ?, ?, ?, ?, ?)`, [req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], 
 					(error, results, fields) => {
