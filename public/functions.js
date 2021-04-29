@@ -26,7 +26,6 @@ function fillForm(lon, lat) {
 }
 
 function addModulesToMap(map, location, details) {
-	console.log(location[0], location[1], details[0], details[1] );
 	const marker = L.marker([location[0], location[1]]).addTo(map);
 	marker.bindPopup(`<b>${details[0]}</b><br>${details[1]}`);
 }
@@ -38,12 +37,16 @@ function searchButton() {
 		purgeTable();
 		purgeMap();
 		dbSearch(query); 
+		document.getElementById('alert').style.display = "none";
 		} else {
-			console.log("No value");
+			console.log("Ajax Get Search - No Input");
+			document.getElementById('alert').innerHTML = "Empty search query";
+			document.getElementById('alert').style.display = "block";
 		}
-		
 	} catch (e) {
 		console.log(`Error ${e} has occured!`);
+		document.getElementById('alert').innerHTML = "Error has occured";
+		document.getElementById('alert').style.display = "block";
 	}
 }
 
@@ -55,12 +58,13 @@ async function dbSearch(query) {
 				const arrayValue = Object.values(value)
 				addRows(arrayValue);
 			})
-			console.log(contents);
 			if (contents.length != 0) {
 				document.getElementById("table").style.display = "block";
 				map();
 			} else {
-				console.log("Fail");
+				console.log("Ajax Search Get - Failed to find");
+				document.getElementById('alert').innerHTML = "No results found";
+				document.getElementById('alert').style.display = "block";
 			}
 		});
 }
@@ -75,7 +79,6 @@ function purgeTable() {
 function purgeMap() {
 	let mapElement = document.getElementById('mapDiv');
 	let mapChildElement = document.getElementById('mapid');
-	console.log(mapElement);
 	if (!document.getElementById('mapid').className == false) {
 		mapChildElement.remove();
 
@@ -142,7 +145,9 @@ function getData() {
 		}
 		saveData(contents)
 	} catch (e) {
-		console.log(`Error ${e}`);
+		console.log(`Get data error - ${e}`);
+		document.getElementById('alert').innerHTML = `Error has occured: ${e}`;
+		document.getElementById('alert').style.display = "block";
 	}
 }
 
@@ -172,7 +177,6 @@ async function saveData(contents) {
 }
 
 async function saveRecommendation(id) {
-	console.log(id);
 	const response = await fetch(`/poi/${id}/recommend`, {
 			method: 'POST',
 			headers: {
@@ -214,7 +218,7 @@ async function checkLogin() {
 	.then(response => {return response.json()})
 	.then(contents => {
 		if (contents.username) {
-			console.log(contents.username);
+			document.getElementById('alert').style.display = "none";
 			document.getElementById('loginInput').style.display = "none";
 			document.getElementById('passwordInput').style.display = "none";
 			document.getElementById('loginButton').style.display = "none";
@@ -226,6 +230,9 @@ async function checkLogin() {
 			welcomeText.innerHTML = "";
 			welcomeText.innerHTML = `Welcome ${contents.username}`;
 			document.getElementById('logoutButton').style.display = "block";
+		} else {
+			document.getElementById('alert').innerHTML = "User not found";
+			document.getElementById('alert').style.display = "block";
 		}
 	});
 	// const answer = response.json();
