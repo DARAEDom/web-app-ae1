@@ -187,14 +187,15 @@ async function saveRecommendation(id) {
 	if(response.status == 401) {
 		console.log("Ajax Recommend Post - Not logged in");
 		alertHtml.value = "Log in before Sending Recommendation";
+		alertHtml.style.display = "block"
 	} else if (response.status == 500) {
 		console.log("Ajax Recommend Post - Error");
 		alertHtml.value = "Error has occured";
+		alertHtml.style.display = "block"
 	} else {
 		alertHtml.style.display = "none";
 	}
 }
-
 
 function loginDetails() {
 	details = {
@@ -231,7 +232,7 @@ async function checkLogin() {
 			welcomeText.innerHTML = `Welcome ${contents.username}`;
 			document.getElementById('logoutButton').style.display = "block";
 		} else {
-			document.getElementById('alert').innerHTML = "User not found";
+			document.getElementById('alert').innerHTML = "User not Logged in";
 			document.getElementById('alert').style.display = "block";
 		}
 	});

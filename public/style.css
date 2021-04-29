@@ -13,3 +13,10 @@ table {
 th {
 	padding-right: 12%;
 }
+/*
+table  { margin-top:  20px; display: inline-block; overflow: auto; }
+th { margin-top: -20px; position: absolute; }
+*/
+/* design */ 
+table { border-collapse: collapse; height: 300px; overflow: auto;}
+tr:nth-child(even) { background: #EEE;}  
