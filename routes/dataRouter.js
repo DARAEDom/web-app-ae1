@@ -18,6 +18,8 @@ dataRouter.post('/poi/add', poiControl.add);
 
 dataRouter.get('/poi/recent', poiControl.recent);
 
+dataRouter.post('/poi/review', poiControl.review);
+
 dataRouter.get('/poi/home', (req, res) => {
 		conn.query(`SELECT * FROM pointsofinterest ORDER BY ID DESC LIMIT 10`, 
 				(error, results, fields) => {

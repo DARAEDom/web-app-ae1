@@ -1,6 +1,20 @@
 const bodyParser = require('body-parser');
 const conn = require('../routes/mysqlconn');
 
+exports.review = async(req, res) => {
+	try {
+		conn.query(`SELECT * FROM poinstofinterest WHERE id=?`, [req.params.id],
+		(error, results, fields) => {
+			if(erorr) {
+				res.status(500).json({error: error});
+			} else if (results){
+				res.json(results);
+			}
+		});
+	} catch (e) {
+		console.log(`Error ${e}`);
+	}
+}
 exports.recent = async(req, res) => {
 		try {
 			conn.query(`SELECT * FROM pointsofinterest ORDER BY ID DESC LIMIT 10`, 

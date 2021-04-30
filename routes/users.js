@@ -32,10 +32,6 @@ userRoutes.post('/login', (req, res) => {
 		} else if (error) {
 			res.status(404).json({error: error});
 		}
-/*		if(req.body.username == 'username' && req.body.password == 'password') {
-			req.session.username = req.body.username;
-			res.json({success: 1});
-*/
 		else {
 			res.status(401).json({error: "Incorrect Login!"});
 		}
