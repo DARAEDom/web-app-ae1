@@ -6,7 +6,7 @@ function map() {
 	const location = document.body.getElementsByTagName("td");
 	
 	const pos = [ parseInt(location[5].childNodes[0].nodeValue), parseInt(location[4].childNodes[0].nodeValue)];
-	map.setView(pos, 14);
+	map.setView(pos, 10);
 
 	const array = Array.from(location);
 		for(i=0; i < location.length/9; i++) {

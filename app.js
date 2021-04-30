@@ -50,33 +50,32 @@ app.get('/home', (req, res) => {
 console.log(`Server is running on http://localhost:${process.env.SERVER_PORT}/`);
 app.listen(8080);
 
-function checkJSON(json) {
-	try {
-			const jsonCheck = JSON.parse(json);
+// function checkJSON(json) {
+// 	try {
+// 			const jsonCheck = JSON.parse(json);
 
-			if (jsonCheck && typeof jsonCheck === "object") {
-					return jsonCheck;
-		}
-	} catch (e) {
-			console.log(`Error: JSON Check failed ${e}`);
-			return false;
-	}
-}
+// 			if (jsonCheck && typeof jsonCheck === "object") {
+// 					return jsonCheck;
+// 		}
+// 	} catch (e) {
+// 			console.log(`Error: JSON Check failed ${e}`);
+// 			return false;
+// 	}
+// }
 
-function multipleCheckJSON (params) {
-	try {
-			params.forEach(file => {
-					const jsonCheck = JSON.parse(file);
-					if (file && typeof file === "object") {
-							return true;
-					} else {
-							return false;
-					}
-			});
+// function multipleCheckJSON (params) {
+// 	try {
+// 			params.forEach(file => {
+// 					const jsonCheck = JSON.parse(file);
+// 					if (file && typeof file === "object") {
+// 							return true;
+// 					} else {
+// 							return false;
+// 					}
+// 			});
 
-	} catch (e) {
-			console.log(`Error: JSON Check failed ${e}`);
-			return false;
-	}
-
-}
+// 	} catch (e) {
+// 			console.log(`Error: JSON Check failed ${e}`);
+// 			return false;
+// 	}
+// }
